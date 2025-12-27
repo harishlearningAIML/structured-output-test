@@ -1,0 +1,2383 @@
+{
+  "timestamp": "2025-12-27T15:18:32.374880",
+  "models_tested": [
+    "Gemma 3 4B IT v1",
+    "Gemma 2 2B IT v2",
+    "Llama 3.2 3B Instruct v1"
+  ],
+  "report": {
+    "summary": {
+      "total_tests": 60,
+      "models_tested": [
+        "Llama 3.2 3B Instruct v1",
+        "Gemma 2 2B IT v2",
+        "Gemma 3 4B IT v1"
+      ],
+      "schemas_tested": [
+        "simple",
+        "medium",
+        "complex",
+        "edge_case"
+      ],
+      "overall_parse_success": 96.66666666666667,
+      "overall_full_compliance": 83.33333333333334,
+      "total_smoking_guns": 8
+    },
+    "by_model": {
+      "Llama 3.2 3B Instruct v1": {
+        "total_tests": 20,
+        "parse_success_rate": 90.0,
+        "full_schema_compliance": 80.0,
+        "hallucination_rate": 10.0,
+        "avg_errors_per_response": 0.3,
+        "avg_latency_ms": 7529.434776306152,
+        "error_breakdown": {
+          "missing_field": 2,
+          "hallucinated_field": 2,
+          "parse_failure": 2
+        }
+      },
+      "Gemma 2 2B IT v2": {
+        "total_tests": 20,
+        "parse_success_rate": 100.0,
+        "full_schema_compliance": 90.0,
+        "hallucination_rate": 10.0,
+        "avg_errors_per_response": 0.3,
+        "avg_latency_ms": 6845.785772800446,
+        "error_breakdown": {
+          "hallucinated_field": 6
+        }
+      },
+      "Gemma 3 4B IT v1": {
+        "total_tests": 20,
+        "parse_success_rate": 100.0,
+        "full_schema_compliance": 80.0,
+        "hallucination_rate": 0.0,
+        "avg_errors_per_response": 0.2,
+        "avg_latency_ms": 12730.094301700592,
+        "error_breakdown": {
+          "wrong_type": 4
+        }
+      }
+    },
+    "by_schema": {
+      "simple": {
+        "total_tests": 18,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 100.0
+      },
+      "medium": {
+        "total_tests": 18,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 77.77777777777779
+      },
+      "complex": {
+        "total_tests": 12,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 100.0
+      },
+      "edge_case": {
+        "total_tests": 12,
+        "parse_success_rate": 83.33333333333334,
+        "full_compliance_rate": 50.0
+      }
+    },
+    "failure_analysis": {
+      "parse_failures": [],
+      "schema_violations": [],
+      "hallucinated_fields": [],
+      "type_errors": [],
+      "constraint_violations": []
+    },
+    "smoking_guns": [
+      {
+        "model": "Gemma 3 4B IT v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Gemma 3 4B IT v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Gemma 3 4B IT v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Gemma 3 4B IT v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "edge_case",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "parties.status",
+          "parties.fees",
+          "parties.notes"
+        ],
+        "sample_json": {
+          "transaction_id": "TXN-1234567890",
+          "amount": 1500.5,
+          "currency": "USD",
+          "exchange_rate": null,
+          "parties": {
+            "sender": {
+              "account_id": "ACC001",
+              "name": "Alice Corp",
+              "bank_code": "CHASE001"
+            },
+            "receiver": {
+              "account_id": "ACC002",
+              "name": "Bob Inc",
+              "bank_code": null
+            },
+            "status": "completed",
+            "fees": [
+              {
+                "type": "processing",
+                "amount": 2.5
+              },
+              {
+                "type": "wire",
+                "amount": 15.0
+              }
+            ],
+            "notes": "Monthly payment"
+          },
+          "status": "completed"
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "edge_case",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "parties.status",
+          "parties.fees",
+          "parties.notes"
+        ],
+        "sample_json": {
+          "transaction_id": "TXN-1234567890",
+          "amount": 1500.5,
+          "currency": "USD",
+          "exchange_rate": null,
+          "parties": {
+            "sender": {
+              "account_id": "ACC001",
+              "name": "Alice Corp",
+              "bank_code": "CHASE001"
+            },
+            "receiver": {
+              "account_id": "ACC002",
+              "name": "Bob Inc",
+              "bank_code": null
+            },
+            "status": "completed",
+            "fees": [
+              {
+                "type": "processing",
+                "amount": 2.5
+              },
+              {
+                "type": "wire",
+                "amount": 15.0
+              }
+            ],
+            "notes": "Monthly payment"
+          },
+          "status": "completed"
+        }
+      },
+      {
+        "model": "Llama 3.2 3B Instruct v1",
+        "schema": "edge_case",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "parties.status"
+        ],
+        "sample_json": {
+          "transaction_id": "TXN-1234567890",
+          "amount": 1500.5,
+          "currency": "USD",
+          "exchange_rate": null,
+          "parties": {
+            "sender": {
+              "account_id": "ACC001",
+              "name": "Alice Corp",
+              "bank_code": "CHASE001"
+            },
+            "receiver": {
+              "account_id": "ACC002",
+              "name": "Bob Inc",
+              "bank_code": null
+            },
+            "status": "completed"
+          },
+          "fees": [
+            {
+              "type": "processing",
+              "amount": 2.5
+            },
+            {
+              "type": "wire",
+              "amount": 15.0
+            }
+          ],
+          "notes": "Monthly payment"
+        }
+      },
+      {
+        "model": "Llama 3.2 3B Instruct v1",
+        "schema": "edge_case",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "parties.status"
+        ],
+        "sample_json": {
+          "transaction_id": "TXN-1234567890",
+          "amount": 1500.5,
+          "currency": "USD",
+          "exchange_rate": null,
+          "parties": {
+            "sender": {
+              "account_id": "ACC001",
+              "name": "Alice Corp",
+              "bank_code": "CHASE001"
+            },
+            "receiver": {
+              "account_id": "ACC002",
+              "name": "Bob Inc",
+              "bank_code": null
+            },
+            "status": "completed"
+          },
+          "fees": [
+            {
+              "type": "processing",
+              "amount": 2.5
+            },
+            {
+              "type": "wire",
+              "amount": 15.0
+            }
+          ],
+          "notes": "Monthly payment"
+        }
+      }
+    ]
+  },
+  "raw_results": [
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3640.7549381256104,
+      "raw_response": "```json\n{\"order_id\": \"ORD-12345\", \"customer_name\": \"John Smith\", \"total\": 99.99, \"status\": \"pending\"}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3090.2771949768066,
+      "raw_response": "```json\n{\"order_id\": \"ORD-12345\", \"customer_name\": \"John Smith\", \"total\": 99.99, \"status\": \"pending\"}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3166.049003601074,
+      "raw_response": "```json\n{\"order_id\": \"ORD-99999\", \"customer_name\": \"Sarah Jones\", \"total\": 250.00, \"status\": \"delivered\"}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3155.0540924072266,
+      "raw_response": "```json\n{\"order_id\": \"ORD-99999\", \"customer_name\": \"Sarah Jones\", \"total\": 250.00, \"status\": \"delivered\"}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2877.5761127471924,
+      "raw_response": "```json\n{\"order_id\": \"ABC123\", \"customer_name\": \"Test User\", \"total\": 50, \"status\": \"shipped\"}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2874.971866607666,
+      "raw_response": "```json\n{\"order_id\": \"ABC123\", \"customer_name\": \"Test User\", \"total\": 50, \"status\": \"shipped\"}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 8446.79594039917,
+      "raw_response": "```json\n{\n  \"user_id\": 42,\n  \"email\": \"john@example.com\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"country\": \"USA\",\n    \"postal_code\": \"10001\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"dark\",\n    \"language\": null\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 7650.575160980225,
+      "raw_response": "```json\n{\n  \"user_id\": 42,\n  \"email\": \"john@example.com\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"country\": \"USA\",\n    \"postal_code\": \"10001\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"dark\",\n    \"language\": null\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 7960.6592655181885,
+      "raw_response": "```json\n{\n  \"user_id\": 100,\n  \"email\": \"alice@test.org\",\n  \"address\": {\n    \"street\": \"456 Oak Ave\",\n    \"city\": \"London\",\n    \"country\": \"UK\",\n    \"postal_code\": \"SW1A 1AA\"\n  },\n  \"preferences\": {\n    \"newsletter\": false,\n    \"theme\": \"light\",\n    \"language\": \"English\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 7631.652116775513,
+      "raw_response": "```json\n{\n  \"user_id\": 100,\n  \"email\": \"alice@test.org\",\n  \"address\": {\n    \"street\": \"456 Oak Ave\",\n    \"city\": \"London\",\n    \"country\": \"UK\",\n    \"postal_code\": \"SW1A 1AA\"\n  },\n  \"preferences\": {\n    \"newsletter\": false,\n    \"theme\": \"light\",\n    \"language\": \"English\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 7539.02792930603,
+      "raw_response": "```json\n{\n  \"user_id\": 7,\n  \"email\": \"test@demo.com\",\n  \"address\": {\n    \"street\": \"789 Pine Rd\",\n    \"city\": \"Toronto\",\n    \"country\": \"Canada\",\n    \"postal_code\": \"M5V 2T6\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"system\",\n    \"language\": null\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 7431.177854537964,
+      "raw_response": "```json\n{\n  \"user_id\": 7,\n  \"email\": \"test@demo.com\",\n  \"address\": {\n    \"street\": \"789 Pine Rd\",\n    \"city\": \"Toronto\",\n    \"country\": \"Canada\",\n    \"postal_code\": \"M5V 2T6\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"system\",\n    \"language\": null\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "John Doe",
+              "created_at": "2023-01-01T00:00:00Z",
+              "tags": [
+                "user1",
+                "tag2"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Jane Smith",
+              "created_at": "2023-02-15T00:00:00Z",
+              "tags": [
+                "user2",
+                "tag3",
+                "tag4"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T10:31:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 33367.621183395386,
+      "raw_response": "```json\n{\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"John Doe\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\n          \"user1\",\n          \"tag2\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"nam"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "John Doe",
+              "created_at": "2023-01-01T00:00:00Z",
+              "tags": [
+                "user1",
+                "tag2"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Jane Smith",
+              "created_at": "2023-02-15T00:00:00Z",
+              "tags": [
+                "user2",
+                "tag3",
+                "tag4"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T10:31:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 29014.81533050537,
+      "raw_response": "```json\n{\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"John Doe\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\n          \"user1\",\n          \"tag2\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"nam"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "timestamp": "2023-10-27T10:00:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "product",
+            "attributes": {
+              "name": "Product A",
+              "created_at": "2023-01-01T00:00:00Z",
+              "tags": [
+                "electronics",
+                "gadget"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "product",
+            "attributes": {
+              "name": "Product B",
+              "created_at": "2023-02-01T00:00:00Z",
+              "tags": [
+                "clothing",
+                "fashion"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 3,
+            "type": "product",
+            "attributes": {
+              "name": "Product C",
+              "created_at": "2023-03-01T00:00:00Z",
+              "tags": [
+                "books",
+                "reading"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 2,
+          "per_page": 5,
+          "total": 12,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "1.5",
+          "rate_limit": {
+            "remaining": 45,
+            "reset_at": "2023-10-27T10:00:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 36465.2578830719,
+      "raw_response": "```json\n{\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-10-27T10:00:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product A\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\n          \"electronics\",\n          \"gadget\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\",\n      \"attributes\":"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "timestamp": "2023-10-27T10:00:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "product",
+            "attributes": {
+              "name": "Product A",
+              "created_at": "2023-01-01T00:00:00Z",
+              "tags": [
+                "electronics",
+                "gadget"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "product",
+            "attributes": {
+              "name": "Product B",
+              "created_at": "2023-02-01T00:00:00Z",
+              "tags": [
+                "clothing",
+                "fashion"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 3,
+            "type": "product",
+            "attributes": {
+              "name": "Product C",
+              "created_at": "2023-03-01T00:00:00Z",
+              "tags": [
+                "books",
+                "reading"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 2,
+          "per_page": 5,
+          "total": 12,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "1.5",
+          "rate_limit": {
+            "remaining": 45,
+            "reset_at": "2023-10-27T10:00:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 35169.240951538086,
+      "raw_response": "```json\n{\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-10-27T10:00:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product A\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\n          \"electronics\",\n          \"gadget\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\",\n      \"attributes\":"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          }
+        },
+        "status": "completed",
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          },
+          {
+            "type": "wire",
+            "amount": 15.0
+          }
+        ],
+        "notes": "Monthly payment"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 16732.96093940735,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.50,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"ACC001\",\n      \"name\": \"Alice Corp\",\n      \"bank_code\": \"CHASE001\"\n    },\n    \"receiver\": {\n      \"account_id\": \"ACC002\",\n      \"name\": \"Bob Inc\",\n      \"bank_code\": null\n    }\n  },\n  \"status\": \"completed\",\n  \"fees\": [\n    {\n      \"type\": \"processing\",\n      \"amount\": 2.50\n    },\n    {\n      \"type\": \"wire\",\n      \"amount\": 15.00\n  "
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          }
+        },
+        "status": "completed",
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          },
+          {
+            "type": "wire",
+            "amount": 15.0
+          }
+        ],
+        "notes": "Monthly payment"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 15550.563097000122,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.50,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"ACC001\",\n      \"name\": \"Alice Corp\",\n      \"bank_code\": \"CHASE001\"\n    },\n    \"receiver\": {\n      \"account_id\": \"ACC002\",\n      \"name\": \"Bob Inc\",\n      \"bank_code\": null\n    }\n  },\n  \"status\": \"completed\",\n  \"fees\": [\n    {\n      \"type\": \"processing\",\n      \"amount\": 2.50\n    },\n    {\n      \"type\": \"wire\",\n      \"amount\": 15.00\n  "
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN1234567890",
+        "amount": 0.01,
+        "currency": "EUR",
+        "exchange_rate": 1.08,
+        "parties": {
+          "sender": {
+            "account_id": "SNDR123",
+            "name": "Sender Name"
+          },
+          "receiver": {
+            "account_id": "RCVR456",
+            "name": "Receiver Name"
+          }
+        },
+        "status": "pending",
+        "fees": [],
+        "notes": null
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 11900.34794807434,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN1234567890\",\n  \"amount\": 0.01,\n  \"currency\": \"EUR\",\n  \"exchange_rate\": 1.08,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"SNDR123\",\n      \"name\": \"Sender Name\"\n    },\n    \"receiver\": {\n      \"account_id\": \"RCVR456\",\n      \"name\": \"Receiver Name\"\n    }\n  },\n  \"status\": \"pending\",\n  \"fees\": [],\n  \"notes\": null\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN1234567890",
+        "amount": 0.01,
+        "currency": "EUR",
+        "exchange_rate": 1.08,
+        "parties": {
+          "sender": {
+            "account_id": "SNDR123",
+            "name": "Sender Name"
+          },
+          "receiver": {
+            "account_id": "RCVR456",
+            "name": "Receiver Name"
+          }
+        },
+        "status": "pending",
+        "fees": [],
+        "notes": null
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 10936.507225036621,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN1234567890\",\n  \"amount\": 0.01,\n  \"currency\": \"EUR\",\n  \"exchange_rate\": 1.08,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"SNDR123\",\n      \"name\": \"Sender Name\"\n    },\n    \"receiver\": {\n      \"account_id\": \"RCVR456\",\n      \"name\": \"Receiver Name\"\n    }\n  },\n  \"status\": \"pending\",\n  \"fees\": [],\n  \"notes\": null\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2704.310894012451,
+      "raw_response": "```json\n{\"order_id\": \"ORD-12345\", \"customer_name\": \"John Smith\", \"total\": 99.99, \"status\": \"pending\"}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2046.8249320983887,
+      "raw_response": "```json\n{\"order_id\": \"ORD-12345\", \"customer_name\": \"John Smith\", \"total\": 99.99, \"status\": \"pending\"}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1942.36421585083,
+      "raw_response": "{\"order_id\": \"ORD-99999\", \"customer_name\": \"Sarah Jones\", \"total\": 250.00, \"status\": \"delivered\"}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1922.947883605957,
+      "raw_response": "{\"order_id\": \"ORD-99999\", \"customer_name\": \"Sarah Jones\", \"total\": 250.00, \"status\": \"delivered\"}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1909.607172012329,
+      "raw_response": "```json\n{\"order_id\": \"ABC123\", \"customer_name\": \"Test User\", \"total\": 50, \"status\": \"shipped\"}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1856.7440509796143,
+      "raw_response": "```json\n{\"order_id\": \"ABC123\", \"customer_name\": \"Test User\", \"total\": 50, \"status\": \"shipped\"}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4220.754146575928,
+      "raw_response": "```json\n{\"user_id\": 42, \"email\": \"john@example.com\", \"address\": {\"street\": \"123 Main St\", \"city\": \"New York\", \"country\": \"USA\", \"postal_code\": \"10001\"}, \"preferences\": {\"newsletter\": true, \"theme\": \"dark\", \"language\": \"en\"}}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3834.841012954712,
+      "raw_response": "```json\n{\"user_id\": 42, \"email\": \"john@example.com\", \"address\": {\"street\": \"123 Main St\", \"city\": \"New York\", \"country\": \"USA\", \"postal_code\": \"10001\"}, \"preferences\": {\"newsletter\": true, \"theme\": \"dark\", \"language\": \"en\"}}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3888.4150981903076,
+      "raw_response": "```json\n{\"user_id\": 100, \"email\": \"alice@test.org\", \"address\": {\"street\": \"456 Oak Ave\", \"city\": \"London\", \"country\": \"UK\", \"postal_code\": \"SW1A 1AA\"}, \"preferences\": {\"newsletter\": false, \"theme\": \"light\", \"language\": \"English\"}}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3878.805160522461,
+      "raw_response": "```json\n{\"user_id\": 100, \"email\": \"alice@test.org\", \"address\": {\"street\": \"456 Oak Ave\", \"city\": \"London\", \"country\": \"UK\", \"postal_code\": \"SW1A 1AA\"}, \"preferences\": {\"newsletter\": false, \"theme\": \"light\", \"language\": \"English\"}}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3848.581075668335,
+      "raw_response": "```json\n{\"user_id\": 7, \"email\": \"test@demo.com\", \"address\": {\"street\": \"789 Pine Rd\", \"city\": \"Toronto\", \"country\": \"Canada\", \"postal_code\": \"M5V 2T6\"}, \"preferences\": {\"newsletter\": true, \"theme\": \"system\", \"language\": \"en\"}}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3798.798084259033,
+      "raw_response": "```json\n{\"user_id\": 7, \"email\": \"test@demo.com\", \"address\": {\"street\": \"789 Pine Rd\", \"city\": \"Toronto\", \"country\": \"Canada\", \"postal_code\": \"M5V 2T6\"}, \"preferences\": {\"newsletter\": true, \"theme\": \"system\", \"language\": \"en\"}}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "John",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "tag1",
+                "tag2"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Jane",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "tag3"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T10:30:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 16048.199892044067,
+      "raw_response": "```json\n{\"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\", \"timestamp\": \"2024-01-15T10:30:00Z\", \"data\": [{\"id\": 1, \"type\": \"user\", \"attributes\": {\"name\": \"John\", \"created_at\": \"2024-01-15T10:30:00Z\", \"tags\": [\"tag1\", \"tag2\"]}, \"relationships\": {\"parent_id\": null, \"children_ids\": []}}, {\"id\": 2, \"type\": \"user\", \"attributes\": {\"name\": \"Jane\", \"created_at\": \"2024-01-15T10:30:00Z\", \"tags\": [\"tag3\"]}, \"relationships\": {\"parent_id\": null, \"children_ids\": []}}], \"pagination\": {\"page\": 1, \"per_page\""
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "John",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "tag1",
+                "tag2"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Jane",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "tag3"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T10:30:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 15788.209199905396,
+      "raw_response": "```json\n{\"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\", \"timestamp\": \"2024-01-15T10:30:00Z\", \"data\": [{\"id\": 1, \"type\": \"user\", \"attributes\": {\"name\": \"John\", \"created_at\": \"2024-01-15T10:30:00Z\", \"tags\": [\"tag1\", \"tag2\"]}, \"relationships\": {\"parent_id\": null, \"children_ids\": []}}, {\"id\": 2, \"type\": \"user\", \"attributes\": {\"name\": \"Jane\", \"created_at\": \"2024-01-15T10:30:00Z\", \"tags\": [\"tag3\"]}, \"relationships\": {\"parent_id\": null, \"children_ids\": []}}], \"pagination\": {\"page\": 1, \"per_page\""
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "timestamp": "2023-10-27T14:15:30Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "product",
+            "attributes": {
+              "name": "Laptop",
+              "created_at": "2023-10-26T10:00:00Z",
+              "tags": [
+                "electronics",
+                "laptop"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "product",
+            "attributes": {
+              "name": "Mouse",
+              "created_at": "2023-10-26T10:05:00Z",
+              "tags": [
+                "electronics",
+                "mouse"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 3,
+            "type": "product",
+            "attributes": {
+              "name": "Keyboard",
+              "created_at": "2023-10-26T10:10:00Z",
+              "tags": [
+                "electronics",
+                "keyboard"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 2,
+          "per_page": 5,
+          "total": 12,
+          "total_pages": 2
+        },
+        "metadata": {
+          "version": "1.5",
+          "rate_limit": {
+            "remaining": 45,
+            "reset_at": "2023-10-28T14:15:30Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 19277.1999835968,
+      "raw_response": "```json\n{\"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\", \"timestamp\": \"2023-10-27T14:15:30Z\", \"data\": [{\"id\": 1, \"type\": \"product\", \"attributes\": {\"name\": \"Laptop\", \"created_at\": \"2023-10-26T10:00:00Z\", \"tags\": [\"electronics\", \"laptop\"]}, \"relationships\": {\"parent_id\": null, \"children_ids\": []}}, {\"id\": 2, \"type\": \"product\", \"attributes\": {\"name\": \"Mouse\", \"created_at\": \"2023-10-26T10:05:00Z\", \"tags\": [\"electronics\", \"mouse\"]}, \"relationships\": {\"parent_id\": null, \"children_ids\": []}}, {\"i"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "timestamp": "2023-10-27T14:15:30Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "product",
+            "attributes": {
+              "name": "Laptop",
+              "created_at": "2023-10-26T10:00:00Z",
+              "tags": [
+                "electronics",
+                "laptop"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "product",
+            "attributes": {
+              "name": "Mouse",
+              "created_at": "2023-10-26T10:05:00Z",
+              "tags": [
+                "electronics",
+                "mouse"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 3,
+            "type": "product",
+            "attributes": {
+              "name": "Keyboard",
+              "created_at": "2023-10-26T10:10:00Z",
+              "tags": [
+                "electronics",
+                "keyboard"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 2,
+          "per_page": 5,
+          "total": 12,
+          "total_pages": 2
+        },
+        "metadata": {
+          "version": "1.5",
+          "rate_limit": {
+            "remaining": 45,
+            "reset_at": "2023-10-28T14:15:30Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 19222.35918045044,
+      "raw_response": "```json\n{\"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\", \"timestamp\": \"2023-10-27T14:15:30Z\", \"data\": [{\"id\": 1, \"type\": \"product\", \"attributes\": {\"name\": \"Laptop\", \"created_at\": \"2023-10-26T10:00:00Z\", \"tags\": [\"electronics\", \"laptop\"]}, \"relationships\": {\"parent_id\": null, \"children_ids\": []}}, {\"id\": 2, \"type\": \"product\", \"attributes\": {\"name\": \"Mouse\", \"created_at\": \"2023-10-26T10:05:00Z\", \"tags\": [\"electronics\", \"mouse\"]}, \"relationships\": {\"parent_id\": null, \"children_ids\": []}}, {\"i"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          },
+          "status": "completed",
+          "fees": [
+            {
+              "type": "processing",
+              "amount": 2.5
+            },
+            {
+              "type": "wire",
+              "amount": 15.0
+            }
+          ],
+          "notes": "Monthly payment"
+        },
+        "status": "completed"
+      },
+      "errors": [
+        {
+          "type": "hallucinated_field",
+          "path": "parties.status",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "parties.fees",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "parties.notes",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "parties.status",
+        "parties.fees",
+        "parties.notes"
+      ],
+      "latency_ms": 8615.968942642212,
+      "raw_response": "```json\n{\"transaction_id\": \"TXN-1234567890\", \"amount\": 1500.50, \"currency\": \"USD\", \"exchange_rate\": null, \"parties\": {\"sender\": {\"account_id\": \"ACC001\", \"name\": \"Alice Corp\", \"bank_code\": \"CHASE001\"}, \"receiver\": {\"account_id\": \"ACC002\", \"name\": \"Bob Inc\", \"bank_code\": null}, \"status\": \"completed\", \"fees\": [{\"type\": \"processing\", \"amount\": 2.50}, {\"type\": \"wire\", \"amount\": 15.00}], \"notes\": \"Monthly payment\"} , \"status\": \"completed\"}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          },
+          "status": "completed",
+          "fees": [
+            {
+              "type": "processing",
+              "amount": 2.5
+            },
+            {
+              "type": "wire",
+              "amount": 15.0
+            }
+          ],
+          "notes": "Monthly payment"
+        },
+        "status": "completed"
+      },
+      "errors": [
+        {
+          "type": "hallucinated_field",
+          "path": "parties.status",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "parties.fees",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "parties.notes",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "parties.status",
+        "parties.fees",
+        "parties.notes"
+      ],
+      "latency_ms": 8539.191722869873,
+      "raw_response": "```json\n{\"transaction_id\": \"TXN-1234567890\", \"amount\": 1500.50, \"currency\": \"USD\", \"exchange_rate\": null, \"parties\": {\"sender\": {\"account_id\": \"ACC001\", \"name\": \"Alice Corp\", \"bank_code\": \"CHASE001\"}, \"receiver\": {\"account_id\": \"ACC002\", \"name\": \"Bob Inc\", \"bank_code\": null}, \"status\": \"completed\", \"fees\": [{\"type\": \"processing\", \"amount\": 2.50}, {\"type\": \"wire\", \"amount\": 15.00}], \"notes\": \"Monthly payment\"} , \"status\": \"completed\"}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "ABC1234567890",
+        "amount": 0.01,
+        "currency": "EUR",
+        "exchange_rate": 1.08,
+        "parties": {
+          "sender": {
+            "account_id": "1234567890",
+            "name": "John",
+            "bank_code": null
+          },
+          "receiver": {
+            "account_id": "9876543210",
+            "name": "Jane",
+            "bank_code": null
+          }
+        },
+        "status": "pending",
+        "fees": [],
+        "notes": null
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 6835.100889205933,
+      "raw_response": "```json\n{\"transaction_id\": \"ABC1234567890\", \"amount\": 0.01, \"currency\": \"EUR\", \"exchange_rate\": 1.08, \"parties\": {\"sender\": {\"account_id\": \"1234567890\", \"name\": \"John\", \"bank_code\": null}, \"receiver\": {\"account_id\": \"9876543210\", \"name\": \"Jane\", \"bank_code\": null}}, \"status\": \"pending\", \"fees\": [], \"notes\": null}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "ABC1234567890",
+        "amount": 0.01,
+        "currency": "EUR",
+        "exchange_rate": 1.08,
+        "parties": {
+          "sender": {
+            "account_id": "1234567890",
+            "name": "John",
+            "bank_code": null
+          },
+          "receiver": {
+            "account_id": "9876543210",
+            "name": "Jane",
+            "bank_code": null
+          }
+        },
+        "status": "pending",
+        "fees": [],
+        "notes": null
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 6736.491918563843,
+      "raw_response": "```json\n{\"transaction_id\": \"ABC1234567890\", \"amount\": 0.01, \"currency\": \"EUR\", \"exchange_rate\": 1.08, \"parties\": {\"sender\": {\"account_id\": \"1234567890\", \"name\": \"John\", \"bank_code\": null}, \"receiver\": {\"account_id\": \"9876543210\", \"name\": \"Jane\", \"bank_code\": null}}, \"status\": \"pending\", \"fees\": [], \"notes\": null}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2262.2408866882324,
+      "raw_response": "{\"order_id\": \"ORD-12345\", \"customer_name\": \"John Smith\", \"total\": 99.99, \"status\": \"pending\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1930.3929805755615,
+      "raw_response": "{\"order_id\": \"ORD-12345\", \"customer_name\": \"John Smith\", \"total\": 99.99, \"status\": \"pending\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1851.6349792480469,
+      "raw_response": "{\"order_id\":\"ORD-99999\",\"customer_name\":\"Sarah Jones\",\"total\":250.00,\"status\":\"delivered\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1671.919822692871,
+      "raw_response": "{\"order_id\":\"ORD-99999\",\"customer_name\":\"Sarah Jones\",\"total\":250.00,\"status\":\"delivered\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50.0,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1916.1930084228516,
+      "raw_response": "{\"order_id\": \"ABC123\", \"customer_name\": \"Test User\", \"total\": 50.0, \"status\": \"shipped\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50.0,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1880.9027671813965,
+      "raw_response": "{\"order_id\": \"ABC123\", \"customer_name\": \"Test User\", \"total\": 50.0, \"status\": \"shipped\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3437.995195388794,
+      "raw_response": "{\"user_id\":42,\"email\":\"john@example.com\",\"address\":{\"street\":\"123 Main St\",\"city\":\"New York\",\"country\":\"USA\",\"postal_code\":\"10001\"},\"preferences\":{\"newsletter\":true,\"theme\":\"dark\",\"language\":\"en\"}}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3066.370964050293,
+      "raw_response": "{\"user_id\":42,\"email\":\"john@example.com\",\"address\":{\"street\":\"123 Main St\",\"city\":\"New York\",\"country\":\"USA\",\"postal_code\":\"10001\"},\"preferences\":{\"newsletter\":true,\"theme\":\"dark\",\"language\":\"en\"}}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4189.365863800049,
+      "raw_response": "{\"user_id\": 100, \"email\": \"alice@test.org\", \"address\": {\"street\": \"456 Oak Ave\", \"city\": \"London\", \"country\": \"UK\", \"postal_code\": \"SW1A 1AA\"}, \"preferences\": {\"newsletter\": false, \"theme\": \"light\", \"language\": \"English\"}}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4007.694959640503,
+      "raw_response": "{\"user_id\": 100, \"email\": \"alice@test.org\", \"address\": {\"street\": \"456 Oak Ave\", \"city\": \"London\", \"country\": \"UK\", \"postal_code\": \"SW1A 1AA\"}, \"preferences\": {\"newsletter\": false, \"theme\": \"light\", \"language\": \"English\"}}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3299.959182739258,
+      "raw_response": "{\"user_id\":7,\"email\":\"test@demo.com\",\"address\":{\"street\":\"789 Pine Rd\",\"city\":\"Toronto\",\"country\":\"Canada\",\"postal_code\":\"M5V 2T6\"},\"preferences\":{\"newsletter\":true,\"theme\":\"system\",\"language\":\"English\"}}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3240.450143814087,
+      "raw_response": "{\"user_id\":7,\"email\":\"test@demo.com\",\"address\":{\"street\":\"789 Pine Rd\",\"city\":\"Toronto\",\"country\":\"Canada\",\"postal_code\":\"M5V 2T6\"},\"preferences\":{\"newsletter\":true,\"theme\":\"system\",\"language\":\"English\"}}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "John",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "tag1",
+                "tag2"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Jane",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "tag3",
+                "tag4"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T10:30:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 19888.61894607544,
+      "raw_response": "{\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"John\",\n        \"created_at\": \"2024-01-15T10:30:00Z\",\n        \"tags\": [\n          \"tag1\",\n          \"tag2\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"Jane\",\n "
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "John",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "tag1",
+                "tag2"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Jane",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "tag3",
+                "tag4"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T10:30:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 19808.507680892944,
+      "raw_response": "{\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"John\",\n        \"created_at\": \"2024-01-15T10:30:00Z\",\n        \"tags\": [\n          \"tag1\",\n          \"tag2\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"Jane\",\n "
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "timestamp": "2023-02-20T14:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "product",
+            "attributes": {
+              "name": "Product 1",
+              "created_at": "2023-02-19T12:00:00Z",
+              "tags": [
+                "tag1",
+                "tag2"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "product",
+            "attributes": {
+              "name": "Product 2",
+              "created_at": "2023-02-19T12:05:00Z",
+              "tags": [
+                "tag3",
+                "tag4"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 3,
+            "type": "product",
+            "attributes": {
+              "name": "Product 3",
+              "created_at": "2023-02-19T12:10:00Z",
+              "tags": [
+                "tag5",
+                "tag6"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 2,
+          "per_page": 5,
+          "total": 12,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "1.5",
+          "rate_limit": {
+            "remaining": 45,
+            "reset_at": "2023-02-20T14:35:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 24290.604829788208,
+      "raw_response": "{\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-02-20T14:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 1\",\n        \"created_at\": \"2023-02-19T12:00:00Z\",\n        \"tags\": [\"tag1\", \"tag2\"]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 2\",\n        \"create"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "timestamp": "2023-02-20T14:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "product",
+            "attributes": {
+              "name": "Product 1",
+              "created_at": "2023-02-19T12:00:00Z",
+              "tags": [
+                "tag1",
+                "tag2"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "product",
+            "attributes": {
+              "name": "Product 2",
+              "created_at": "2023-02-19T12:05:00Z",
+              "tags": [
+                "tag3",
+                "tag4"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 3,
+            "type": "product",
+            "attributes": {
+              "name": "Product 3",
+              "created_at": "2023-02-19T12:10:00Z",
+              "tags": [
+                "tag5",
+                "tag6"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 2,
+          "per_page": 5,
+          "total": 12,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "1.5",
+          "rate_limit": {
+            "remaining": 45,
+            "reset_at": "2023-02-20T14:35:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 24320.411920547485,
+      "raw_response": "{\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-02-20T14:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 1\",\n        \"created_at\": \"2023-02-19T12:00:00Z\",\n        \"tags\": [\"tag1\", \"tag2\"]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 2\",\n        \"create"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          },
+          "status": "completed"
+        },
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          },
+          {
+            "type": "wire",
+            "amount": 15.0
+          }
+        ],
+        "notes": "Monthly payment"
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "status",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "parties.status",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "parties.status"
+      ],
+      "latency_ms": 7768.082857131958,
+      "raw_response": "{\"transaction_id\":\"TXN-1234567890\",\"amount\":1500.5,\"currency\":\"USD\",\"exchange_rate\":null,\"parties\":{\"sender\":{\"account_id\":\"ACC001\",\"name\":\"Alice Corp\",\"bank_code\":\"CHASE001\"},\"receiver\":{\"account_id\":\"ACC002\",\"name\":\"Bob Inc\",\"bank_code\":null},\"status\":\"completed\"},\"fees\":[{\"type\":\"processing\",\"amount\":2.5},{\"type\":\"wire\",\"amount\":15.0}],\"notes\":\"Monthly payment\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          },
+          "status": "completed"
+        },
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          },
+          {
+            "type": "wire",
+            "amount": 15.0
+          }
+        ],
+        "notes": "Monthly payment"
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "status",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "parties.status",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "parties.status"
+      ],
+      "latency_ms": 6529.195070266724,
+      "raw_response": "{\"transaction_id\":\"TXN-1234567890\",\"amount\":1500.5,\"currency\":\"USD\",\"exchange_rate\":null,\"parties\":{\"sender\":{\"account_id\":\"ACC001\",\"name\":\"Alice Corp\",\"bank_code\":\"CHASE001\"},\"receiver\":{\"account_id\":\"ACC002\",\"name\":\"Bob Inc\",\"bank_code\":null},\"status\":\"completed\"},\"fees\":[{\"type\":\"processing\",\"amount\":2.5},{\"type\":\"wire\",\"amount\":15.0}],\"notes\":\"Monthly payment\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found in response"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 8071.547269821167,
+      "raw_response": "{\n  \"transaction_id\": \"123456789012345\",\n  \"amount\": 0.01,\n  \"currency\": \"EUR\",\n  \"exchange_rate\": 1.08,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"1234567890123\",\n      \"name\": \"John\"\n    },\n    \"receiver\": {\n      \"account_id\": \"9876543210987\",\n      \"name\": \"Jane\"\n    }\n  },\n  \"status\": \"pending\",\n  \"fees\": [],\n  \"notes\": null"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found in response"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 7156.606197357178,
+      "raw_response": "{\n  \"transaction_id\": \"123456789012345\",\n  \"amount\": 0.01,\n  \"currency\": \"EUR\",\n  \"exchange_rate\": 1.08,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"1234567890123\",\n      \"name\": \"John\"\n    },\n    \"receiver\": {\n      \"account_id\": \"9876543210987\",\n      \"name\": \"Jane\"\n    }\n  },\n  \"status\": \"pending\",\n  \"fees\": [],\n  \"notes\": null"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "json-output-data-not-schema",
+    "type": "DEFINITION",
+    "domain": "json",
+    "text": "When asked to generate JSON matching a schema, output actual data values, not the schema definition. Output data like {\"order_id\": \"ABC123\", \"total\": 99.99} not schema like {\"type\": \"object\", \"properties\": {...}}."
+  },
+  {
+    "id": "json-no-type-keyword",
+    "type": "REGULATORY",
+    "domain": "json",
+    "text": "Never include 'type', 'required', 'properties', 'additionalProperties' in JSON output. These are schema keywords, not data fields."
+  },
+  {
+    "id": "json-use-actual-values",
+    "type": "DEFINITION",
+    "domain": "json",
+    "text": "Fill JSON fields with actual values from the task. For order_id use the given ID string, for total use the given number, for customer_name use the given name."
+  },
+  {
+    "id": "json-no-nested-type",
+    "type": "REGULATORY",
+    "domain": "json",
+    "text": "Do not nest values inside {\"type\": \"string\", \"value\": ...} structures. Write values directly: {\"name\": \"John\"} not {\"name\": {\"type\": \"string\", \"value\": \"John\"}}."
+  },
+  {
+    "id": "json-simple-structure",
+    "type": "PROCEDURAL",
+    "domain": "json",
+    "text": "Step 1: Read the required field names from the schema. Step 2: Read the values from the task description. Step 3: Create a flat JSON object with field names as keys and task values as values."
+  },
+  {
+    "id": "json-required-fields",
+    "type": "REGULATORY",
+    "domain": "json",
+    "text": "Include all required fields listed in the schema. Do not add extra fields not mentioned in the schema properties."
+  },
+  {
+    "id": "json-correct-types",
+    "type": "DEFINITION",
+    "domain": "json",
+    "text": "Use correct JSON data types: strings in quotes, numbers without quotes, booleans as true/false, arrays in brackets [], objects in braces {}."
+  },
+  {
+    "id": "json-no-markdown",
+    "type": "REGULATORY",
+    "domain": "json",
+    "text": "Output only the raw JSON object. Do not wrap in markdown code blocks. Do not add explanations before or after."
+  }
+]

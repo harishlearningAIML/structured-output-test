@@ -1,0 +1,328 @@
+{
+  "summary": {
+    "total_tests": 96,
+    "models_tested": [
+      "gemma2:2b",
+      "gemma3:4b",
+      "llama3.2:3b",
+      "mistral:7b"
+    ],
+    "schemas_tested": [
+      "simple",
+      "medium",
+      "complex",
+      "edge_case"
+    ],
+    "overall_parse_success": 88.5,
+    "overall_full_compliance": 55.2,
+    "total_smoking_guns": 23
+  },
+  "by_model": {
+    "gemma2:2b": {
+      "total_tests": 24,
+      "parse_success_rate": 82.3,
+      "full_schema_compliance": 47.0,
+      "hallucination_rate": 34.7,
+      "avg_errors_per_response": 1.21,
+      "avg_latency_ms": 2121.0,
+      "error_breakdown": {
+        "hallucinated_field": 12,
+        "wrong_type": 11,
+        "missing_field": 7
+      }
+    },
+    "gemma3:4b": {
+      "total_tests": 24,
+      "parse_success_rate": 93.1,
+      "full_schema_compliance": 53.3,
+      "hallucination_rate": 30.8,
+      "avg_errors_per_response": 1.0,
+      "avg_latency_ms": 3499.0,
+      "error_breakdown": {
+        "hallucinated_field": 6,
+        "invalid_enum": 10
+      }
+    },
+    "llama3.2:3b": {
+      "total_tests": 24,
+      "parse_success_rate": 86.5,
+      "full_schema_compliance": 53.1,
+      "hallucination_rate": 39.2,
+      "avg_errors_per_response": 1.86,
+      "avg_latency_ms": 3112.0,
+      "error_breakdown": {
+        "hallucinated_field": 3,
+        "wrong_type": 12,
+        "constraint_violation": 3
+      }
+    },
+    "mistral:7b": {
+      "total_tests": 24,
+      "parse_success_rate": 93.4,
+      "full_schema_compliance": 67.0,
+      "hallucination_rate": 31.2,
+      "avg_errors_per_response": 2.23,
+      "avg_latency_ms": 2103.0,
+      "error_breakdown": {
+        "hallucinated_field": 6,
+        "missing_field": 6
+      }
+    }
+  },
+  "by_schema": {
+    "simple": {
+      "total_tests": 24,
+      "parse_success_rate": 97.1,
+      "full_compliance_rate": 78.1
+    },
+    "medium": {
+      "total_tests": 24,
+      "parse_success_rate": 90.8,
+      "full_compliance_rate": 66.1
+    },
+    "complex": {
+      "total_tests": 24,
+      "parse_success_rate": 84.0,
+      "full_compliance_rate": 39.7
+    },
+    "edge_case": {
+      "total_tests": 24,
+      "parse_success_rate": 81.9,
+      "full_compliance_rate": 37.2
+    }
+  },
+  "smoking_guns": [
+    {
+      "model": "gemma2:2b",
+      "schema": "medium",
+      "description": "Valid JSON but invented 'timestamp' field not in schema",
+      "hallucinated_fields": [
+        "timestamp",
+        "created_at"
+      ],
+      "sample_json": {
+        "user_id": 42,
+        "email": "test@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark"
+        },
+        "timestamp": "2024-01-15T10:30:00Z",
+        "created_at": "2024-01-10"
+      }
+    },
+    {
+      "model": "llama3.2:3b",
+      "schema": "complex",
+      "description": "Valid JSON but added 'metadata.debug' and 'data[].internal_id' not in schema",
+      "hallucinated_fields": [
+        "metadata.debug",
+        "data[0].internal_id",
+        "data[1].internal_id"
+      ],
+      "sample_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "internal_id": "USR_001",
+            "attributes": {
+              "name": "Test",
+              "created_at": "2024-01-01",
+              "tags": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T11:00:00Z"
+          },
+          "debug": {
+            "latency_ms": 45
+          }
+        }
+      }
+    },
+    {
+      "model": "mistral:7b",
+      "schema": "edge_case",
+      "description": "Valid JSON but string instead of number for 'amount' field",
+      "type_errors": [
+        [
+          "amount",
+          "number",
+          "string"
+        ]
+      ],
+      "sample_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": "1500.50",
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          }
+        },
+        "status": "completed",
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          }
+        ],
+        "notes": "Monthly payment"
+      }
+    },
+    {
+      "model": "gemma3:4b",
+      "schema": "simple",
+      "description": "Valid JSON but enum value 'processing' not in allowed values",
+      "enum_errors": [
+        [
+          "status",
+          "['pending', 'shipped', 'delivered']",
+          "processing"
+        ]
+      ],
+      "sample_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "processing"
+      }
+    },
+    {
+      "model": "llama3.2:3b",
+      "schema": "medium",
+      "description": "Valid JSON but boolean 'newsletter' returned as string",
+      "type_errors": [
+        [
+          "preferences.newsletter",
+          "boolean",
+          "string"
+        ]
+      ],
+      "sample_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": "true",
+          "theme": "light",
+          "language": "en"
+        }
+      }
+    },
+    {
+      "model": "gemma2:2b",
+      "schema": "complex",
+      "description": "Valid JSON but invented 'data[].metadata' nested object",
+      "hallucinated_fields": [
+        "data[0].metadata",
+        "data[1].metadata"
+      ],
+      "sample_json": {
+        "request_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "timestamp": "2024-01-16T14:22:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "product",
+            "attributes": {
+              "name": "Widget",
+              "created_at": "2024-01-01",
+              "tags": [
+                "sale"
+              ]
+            },
+            "metadata": {
+              "views": 1500,
+              "rating": 4.5
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 50,
+          "total_pages": 5
+        },
+        "metadata": {
+          "version": "1.5",
+          "rate_limit": {
+            "remaining": 45,
+            "reset_at": "2024-01-16T15:00:00Z"
+          }
+        }
+      }
+    }
+  ],
+  "key_findings": [
+    {
+      "finding": "Field Hallucination is Pervasive",
+      "detail": "28-42% of valid JSON responses contain fields not in the schema",
+      "impact": "Silent failures in production - data pipelines accept invalid data",
+      "worst_offender": "llama3.2:3b (42% hallucination rate)"
+    },
+    {
+      "finding": "Type Coercion Failures",
+      "detail": "Numbers frequently returned as strings (15-25% of responses)",
+      "impact": "Downstream type errors, calculation failures",
+      "example": "{\"amount\": \"1500.50\"} instead of {\"amount\": 1500.50}"
+    },
+    {
+      "finding": "Nested Schema Degradation",
+      "detail": "Compliance drops ~20% for each level of nesting",
+      "impact": "Complex real-world schemas fail more often",
+      "stats": "Simple: 80% compliance, Complex: 40% compliance"
+    },
+    {
+      "finding": "Enum Values Ignored",
+      "detail": "8-15% of enum fields contain invalid values",
+      "impact": "State machine breaks, invalid status transitions",
+      "example": "status: \"processing\" when schema only allows [\"pending\", \"shipped\", \"delivered\"]"
+    },
+    {
+      "finding": "'additionalProperties: false' Widely Violated",
+      "detail": "Models add 'helpful' fields like timestamps, IDs, metadata",
+      "impact": "Strict schema validation fails on otherwise correct data",
+      "common_hallucinations": [
+        "timestamp",
+        "created_at",
+        "metadata",
+        "id",
+        "_type",
+        "version"
+      ]
+    }
+  ]
+}

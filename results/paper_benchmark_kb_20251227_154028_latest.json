@@ -1,0 +1,624 @@
+{
+  "metadata": {
+    "timestamp": "20251227_154028",
+    "used_kb": true,
+    "iterations": 1,
+    "models": [
+      "Gemma 3 4B IT v1",
+      "Gemma 2 2B IT v2",
+      "Llama 3.2 3B Instruct v1"
+    ]
+  },
+  "report": {
+    "summary": {
+      "total_tests": 42,
+      "models_tested": [
+        "Llama 3.2 3B Instruct v1",
+        "Gemma 2 2B IT v2",
+        "Gemma 3 4B IT v1"
+      ],
+      "used_kb": true,
+      "overall_parse_success": 95.23809523809523,
+      "overall_compliance": 95.23809523809523,
+      "overall_hallucination": 0.0,
+      "sources": [
+        "SchemaBench",
+        "StructuredRAG",
+        "JSONSchemaBench"
+      ],
+      "total_smoking_guns": 0
+    },
+    "by_model": {
+      "Llama 3.2 3B Instruct v1": {
+        "total_tests": 14,
+        "parse_success_rate": 85.71428571428571,
+        "full_compliance_rate": 85.71428571428571,
+        "hallucination_rate": 0.0,
+        "error_breakdown": {
+          "parse_failure": 2
+        },
+        "avg_latency_ms": 2473.365306854248
+      },
+      "Gemma 2 2B IT v2": {
+        "total_tests": 14,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 100.0,
+        "hallucination_rate": 0.0,
+        "error_breakdown": {},
+        "avg_latency_ms": 1826.2226070676531
+      },
+      "Gemma 3 4B IT v1": {
+        "total_tests": 14,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 100.0,
+        "hallucination_rate": 0.0,
+        "error_breakdown": {},
+        "avg_latency_ms": 3189.104437828064
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 12,
+        "parse_success": 100.0,
+        "full_compliance": 100.0,
+        "hallucination_rate": 0.0
+      },
+      "medium": {
+        "total": 15,
+        "parse_success": 93.33333333333333,
+        "full_compliance": 93.33333333333333,
+        "hallucination_rate": 0.0
+      },
+      "hard": {
+        "total": 12,
+        "parse_success": 100.0,
+        "full_compliance": 100.0,
+        "hallucination_rate": 0.0
+      },
+      "ultra": {
+        "total": 3,
+        "parse_success": 66.66666666666666,
+        "full_compliance": 66.66666666666666,
+        "hallucination_rate": 0.0
+      }
+    },
+    "by_source": {
+      "SchemaBench": {
+        "total": 12,
+        "parse_success": 100.0,
+        "full_compliance": 100.0
+      },
+      "StructuredRAG": {
+        "total": 18,
+        "parse_success": 94.44444444444444,
+        "full_compliance": 94.44444444444444
+      },
+      "JSONSchemaBench": {
+        "total": 12,
+        "parse_success": 91.66666666666666,
+        "full_compliance": 91.66666666666666
+      }
+    },
+    "smoking_guns": []
+  },
+  "raw_results": [
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "SchemaBench/complex_schema",
+      "task": "complex_schema",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3769.460916519165,
+      "used_kb": true,
+      "raw_response": "{\"user\": {\"name\": \"Alice\", \"email\": \"alice@example.com\", \"age\": 30}, \"settings\": {\"theme\": \"dark\", \"notifications\": true}}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "SchemaBench/custom_formats",
+      "task": "custom_formats",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3514.1708850860596,
+      "used_kb": true,
+      "raw_response": "{\"phone\": \"555-123-4567\", \"password\": \"SecurePass123\", \"file_path\": \"/home/user/documents/file.txt\"}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "SchemaBench/escape_translation",
+      "task": "escape_translation",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2316.476821899414,
+      "used_kb": true,
+      "raw_response": "{\"message\": \"He said \\\"Hello World\\\"\",\"code_snippet\": \"C:\\\\Users\\\\Admin\\\\file.txt\"}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "SchemaBench/base64_format",
+      "task": "base64_format",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2082.711935043335,
+      "used_kb": true,
+      "raw_response": "{\"data\": \"SGVsbG8gV29ybGQ=\", \"encoding\": \"base64\"}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/string",
+      "task": "string_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1071.4738368988037,
+      "used_kb": true,
+      "raw_response": "{\"answer\": \"Paris\"}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/integer",
+      "task": "integer_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 969.3608283996582,
+      "used_kb": true,
+      "raw_response": "{\"count\": 7}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/boolean",
+      "task": "boolean_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 970.0982570648193,
+      "used_kb": true,
+      "raw_response": "{\"result\": false}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/list_strings",
+      "task": "list_strings",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1811.3701343536377,
+      "used_kb": true,
+      "raw_response": "{\"items\": [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\"]}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/composite",
+      "task": "composite_object",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1790.6818389892578,
+      "used_kb": true,
+      "raw_response": "{\"answer\": \"1945\", \"confidence\": 0.99}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/list_composite",
+      "task": "list_composite",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3461.5747928619385,
+      "used_kb": true,
+      "raw_response": "```json\n{\"answers\": [{\"answer\": \"Python\", \"confidence\": 0.9}, {\"answer\": \"Java\", \"confidence\": 0.8}, {\"answer\": \"JavaScript\", \"confidence\": 0.7}]}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "JSONSchemaBench/easy",
+      "task": "simple_product",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1958.7819576263428,
+      "used_kb": true,
+      "raw_response": "{\"name\": \"Widget\", \"price\": 29.99, \"in_stock\": true}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "JSONSchemaBench/medium",
+      "task": "order_with_shipping",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3936.609983444214,
+      "used_kb": true,
+      "raw_response": "{\"order_id\": \"ORD-001\", \"customer\": {\"name\": \"John Doe\", \"email\": \"john@example.com\"}, \"shipping\": {\"method\": \"express\", \"address\": \"123 Main St\"}}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "JSONSchemaBench/hard",
+      "task": "api_response",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 5450.009107589722,
+      "used_kb": true,
+      "raw_response": "{\"status\": \"success\", \"data\": [{\"id\": 1, \"name\": \"Item A\", \"tags\": [\"new\", \"featured\"]}, {\"id\": 2, \"name\": \"Item B\", \"tags\": [\"sale\"]}], \"meta\": {\"page\": 1, \"total\": 50}}"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "JSONSchemaBench/ultra",
+      "task": "financial_record",
+      "difficulty": "ultra",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 11544.680833816528,
+      "used_kb": true,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.50,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"id\": \"S001\",\n      \"name\": \"Alice Corp\",\n      \"bank\": \"Chase\"\n    },\n    \"receiver\": {\n      \"id\": \"R001\",\n      \"name\": \"Bob Inc\",\n      \"bank\": null\n    }\n  },\n  \"notes\": \"Monthly payment\"\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "SchemaBench/complex_schema",
+      "task": "complex_schema",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2257.438898086548,
+      "used_kb": true,
+      "raw_response": "{\"user\": {\"name\": \"Alice\", \"email\": \"alice@example.com\", \"age\": 30}, \"settings\": {\"theme\": \"dark\", \"notifications\": true}}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "SchemaBench/custom_formats",
+      "task": "custom_formats",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2230.942964553833,
+      "used_kb": true,
+      "raw_response": "{\"phone\": \"555-123-4567\", \"password\": \"SecurePass123\", \"file_path\": \"/home/user/documents/file.txt\"}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "SchemaBench/escape_translation",
+      "task": "escape_translation",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1376.9969940185547,
+      "used_kb": true,
+      "raw_response": "{\"message\": \"He said \\\"Hello World\\\"\", \"code_snippet\": \"C:\\\\Users\\\\Admin\\\\file.txt\"}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "SchemaBench/base64_format",
+      "task": "base64_format",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1284.2180728912354,
+      "used_kb": true,
+      "raw_response": "{\"data\": \"SGVsbG8gV29ybGQ=\", \"encoding\": \"base64\"}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/string",
+      "task": "string_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 614.6979331970215,
+      "used_kb": true,
+      "raw_response": "{\"answer\": \"Paris\"}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/integer",
+      "task": "integer_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 588.2570743560791,
+      "used_kb": true,
+      "raw_response": "{\"count\": 7}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/boolean",
+      "task": "boolean_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 579.380989074707,
+      "used_kb": true,
+      "raw_response": "{\"result\": false}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/list_strings",
+      "task": "list_strings",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1060.2128505706787,
+      "used_kb": true,
+      "raw_response": "{\"items\": [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\"]}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/composite",
+      "task": "composite_object",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1073.1000900268555,
+      "used_kb": true,
+      "raw_response": "{\"answer\": \"1945\", \"confidence\": 0.99}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/list_composite",
+      "task": "list_composite",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2267.765760421753,
+      "used_kb": true,
+      "raw_response": "{\"answers\": [{\"answer\": \"Python\", \"confidence\": 0.9}, {\"answer\": \"Java\", \"confidence\": 0.8}, {\"answer\": \"JavaScript\", \"confidence\": 0.7}]}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "JSONSchemaBench/easy",
+      "task": "simple_product",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1331.6709995269775,
+      "used_kb": true,
+      "raw_response": "{\"name\": \"Widget\", \"price\": 29.99, \"in_stock\": true}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "JSONSchemaBench/medium",
+      "task": "order_with_shipping",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2593.036890029907,
+      "used_kb": true,
+      "raw_response": "{\"order_id\": \"ORD-001\", \"customer\": {\"name\": \"John Doe\", \"email\": \"john@example.com\"}, \"shipping\": {\"method\": \"express\", \"address\": \"123 Main St\"}}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "JSONSchemaBench/hard",
+      "task": "api_response",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3460.844039916992,
+      "used_kb": true,
+      "raw_response": "{\"status\": \"success\", \"data\": [{\"id\": 1, \"name\": \"Item A\", \"tags\": [\"new\", \"featured\"]}, {\"id\": 2, \"name\": \"Item B\", \"tags\": [\"sale\"]}], \"meta\": {\"page\": 1, \"total\": 50}}"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "JSONSchemaBench/ultra",
+      "task": "financial_record",
+      "difficulty": "ultra",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4848.552942276001,
+      "used_kb": true,
+      "raw_response": "{\"transaction_id\": \"TXN-1234567890\", \"amount\": 1500.50, \"currency\": \"USD\", \"parties\": {\"sender\": {\"id\": \"S001\", \"name\": \"Alice Corp\", \"bank\": \"Chase\"}, \"receiver\": {\"id\": \"R001\", \"name\": \"Bob Inc\", \"bank\": null}}, \"notes\": \"Monthly payment\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "SchemaBench/complex_schema",
+      "task": "complex_schema",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3302.339792251587,
+      "used_kb": true,
+      "raw_response": "{\n  \"user\": {\n    \"name\": \"Alice\",\n    \"email\": \"alice@example.com\",\n    \"age\": 30\n  },\n  \"settings\": {\n    \"theme\": \"dark\",\n    \"notifications\": true\n  }\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "SchemaBench/custom_formats",
+      "task": "custom_formats",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1888.6878490447998,
+      "used_kb": true,
+      "raw_response": "{\"phone\": \"555-123-4567\", \"password\": \"SecurePass123\", \"file_path\": \"/home/user/documents/file.txt\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "SchemaBench/escape_translation",
+      "task": "escape_translation",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1663.1090641021729,
+      "used_kb": true,
+      "raw_response": "{\"message\": \"He said \\\"Hello World\\\"\", \"code_snippet\": \"C:\\\\Users\\\\Admin\\\\file.txt\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "SchemaBench/base64_format",
+      "task": "base64_format",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1551.6726970672607,
+      "used_kb": true,
+      "raw_response": "{\"data\": \"SGVsbG8gV29ybGQ=\", \"encoding\": \"base64\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/string",
+      "task": "string_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 815.526008605957,
+      "used_kb": true,
+      "raw_response": "{\"answer\": \"Paris\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/integer",
+      "task": "integer_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 692.1799182891846,
+      "used_kb": true,
+      "raw_response": "{\"count\":2}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/boolean",
+      "task": "boolean_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 729.8159599304199,
+      "used_kb": true,
+      "raw_response": "{\"result\":false}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/list_strings",
+      "task": "list_strings",
+      "difficulty": "medium",
+      "is_valid_json": false,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 1963.0789756774902,
+      "used_kb": true,
+      "raw_response": "{\n  \"items\": [\n    \"Mercury\",\n    \"Venus\",\n    \"Earth\",\n    \"Mars\",\n    \"Jupiter\"\n  ]"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/composite",
+      "task": "composite_object",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1130.4960250854492,
+      "used_kb": true,
+      "raw_response": "{\"answer\": \"1945\", \"confidence\": 1}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/list_composite",
+      "task": "list_composite",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3017.136812210083,
+      "used_kb": true,
+      "raw_response": "{\n  \"answers\": [\n    {\"answer\": \"Python\", \"confidence\": 0.8},\n    {\"answer\": \"Java\", \"confidence\": 0.7},\n    {\"answer\": \"C++\", \"confidence\": 0.9}\n  ]\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "JSONSchemaBench/easy",
+      "task": "simple_product",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1426.1939525604248,
+      "used_kb": true,
+      "raw_response": "{\"name\": \"Widget\", \"price\": 29.99, \"in_stock\": true}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "JSONSchemaBench/medium",
+      "task": "order_with_shipping",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3373.103141784668,
+      "used_kb": true,
+      "raw_response": "{\n  \"order_id\": \"ORD-001\",\n  \"customer\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\"\n  },\n  \"shipping\": {\n    \"method\": \"express\",\n    \"address\": \"123 Main St\"\n  }\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "JSONSchemaBench/hard",
+      "task": "api_response",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 5634.777069091797,
+      "used_kb": true,
+      "raw_response": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Item A\",\n      \"tags\": [\n        \"new\",\n        \"featured\"\n      ]\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Item B\",\n      \"tags\": [\n        \"sale\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"page\": 1,\n    \"total\": 50\n  }\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "JSONSchemaBench/ultra",
+      "task": "financial_record",
+      "difficulty": "ultra",
+      "is_valid_json": false,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 7438.997030258179,
+      "used_kb": true,
+      "raw_response": "{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.5,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"id\": \"S001\",\n      \"name\": \"Alice Corp\",\n      \"bank\": \"Chase\"\n    },\n    \"receiver\": {\n      \"id\": \"R001\",\n      \"name\": \"Bob Inc\",\n      \"bank\": null\n    }\n  },\n  \"notes\": \"Monthly payment\""
+    }
+  ]
+}

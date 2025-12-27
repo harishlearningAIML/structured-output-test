@@ -1,0 +1,2682 @@
+{
+  "timestamp": "2025-12-27T12:48:36.543784",
+  "models_tested": [
+    "Gemma 3 4B IT v1",
+    "Gemma 2 2B IT v2",
+    "Llama 3.2 3B Instruct v1",
+    "Ministral 3B Instruct"
+  ],
+  "report": {
+    "summary": {
+      "total_tests": 60,
+      "models_tested": [
+        "Gemma 3 4B IT v1",
+        "Llama 3.2 3B Instruct v1",
+        "Gemma 2 2B IT v2"
+      ],
+      "schemas_tested": [
+        "simple",
+        "medium",
+        "complex",
+        "edge_case"
+      ],
+      "overall_parse_success": 86.66666666666667,
+      "overall_full_compliance": 60.0,
+      "total_smoking_guns": 16
+    },
+    "by_model": {
+      "Gemma 3 4B IT v1": {
+        "total_tests": 20,
+        "parse_success_rate": 90.0,
+        "full_schema_compliance": 70.0,
+        "hallucination_rate": 0.0,
+        "avg_errors_per_response": 0.3,
+        "avg_latency_ms": 11743.155026435852,
+        "error_breakdown": {
+          "wrong_type": 4,
+          "parse_failure": 2
+        }
+      },
+      "Llama 3.2 3B Instruct v1": {
+        "total_tests": 20,
+        "parse_success_rate": 80.0,
+        "full_schema_compliance": 70.0,
+        "hallucination_rate": 0.0,
+        "avg_errors_per_response": 0.3,
+        "avg_latency_ms": 9032.627356052399,
+        "error_breakdown": {
+          "wrong_type": 2,
+          "parse_failure": 4
+        }
+      },
+      "Gemma 2 2B IT v2": {
+        "total_tests": 20,
+        "parse_success_rate": 90.0,
+        "full_schema_compliance": 40.0,
+        "hallucination_rate": 50.0,
+        "avg_errors_per_response": 3.3,
+        "avg_latency_ms": 9007.62996673584,
+        "error_breakdown": {
+          "missing_field": 32,
+          "hallucinated_field": 32,
+          "parse_failure": 2
+        }
+      }
+    },
+    "by_schema": {
+      "simple": {
+        "total_tests": 18,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 77.77777777777779
+      },
+      "medium": {
+        "total_tests": 18,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 66.66666666666666
+      },
+      "complex": {
+        "total_tests": 12,
+        "parse_success_rate": 33.33333333333333,
+        "full_compliance_rate": 16.666666666666664
+      },
+      "edge_case": {
+        "total_tests": 12,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 66.66666666666666
+      }
+    },
+    "failure_analysis": {
+      "parse_failures": [],
+      "schema_violations": [],
+      "hallucinated_fields": [],
+      "type_errors": [],
+      "constraint_violations": []
+    },
+    "smoking_guns": [
+      {
+        "model": "Gemma 3 4B IT v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Gemma 3 4B IT v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Gemma 3 4B IT v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Gemma 3 4B IT v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "simple",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ],
+        "sample_json": {
+          "type": "object",
+          "required": [
+            "order_id",
+            "customer_name",
+            "total"
+          ],
+          "properties": {
+            "order_id": "ORD-12345",
+            "customer_name": "John Smith",
+            "total": 99.99,
+            "status": "pending"
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "simple",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ],
+        "sample_json": {
+          "type": "object",
+          "required": [
+            "order_id",
+            "customer_name",
+            "total"
+          ],
+          "properties": {
+            "order_id": "ORD-12345",
+            "customer_name": "John Smith",
+            "total": 99.99,
+            "status": "pending"
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "simple",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties"
+        ],
+        "sample_json": {
+          "type": "object",
+          "required": [
+            "order_id",
+            "customer_name",
+            "total"
+          ],
+          "properties": {
+            "order_id": "ABC123",
+            "customer_name": "Test User",
+            "total": 50,
+            "status": "shipped"
+          }
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "simple",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties"
+        ],
+        "sample_json": {
+          "type": "object",
+          "required": [
+            "order_id",
+            "customer_name",
+            "total"
+          ],
+          "properties": {
+            "order_id": "ABC123",
+            "customer_name": "Test User",
+            "total": 50,
+            "status": "shipped"
+          }
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "complex",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type"
+        ],
+        "sample_json": {
+          "type": "object",
+          "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          "timestamp": "2024-01-15T10:30:00Z",
+          "data": [
+            {
+              "id": 1,
+              "type": "user",
+              "attributes": {
+                "name": "John Doe",
+                "created_at": "2024-01-15T10:30:00Z",
+                "tags": [
+                  "developer",
+                  "frontend"
+                ]
+              },
+              "relationships": {
+                "parent_id": null,
+                "children_ids": []
+              }
+            },
+            {
+              "id": 2,
+              "type": "user",
+              "attributes": {
+                "name": "Jane Doe",
+                "created_at": "2024-01-15T10:30:00Z",
+                "tags": [
+                  "designer",
+                  "backend"
+                ]
+              },
+              "relationships": {
+                "parent_id": null,
+                "children_ids": []
+              }
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "per_page": 10,
+            "total": 25,
+            "total_pages": 3
+          },
+          "metadata": {
+            "version": "2.0",
+            "rate_limit": {
+              "remaining": 99,
+              "reset_at": "2024-01-16T10:30:00Z"
+            },
+            "warnings": []
+          }
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "complex",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type"
+        ],
+        "sample_json": {
+          "type": "object",
+          "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          "timestamp": "2024-01-15T10:30:00Z",
+          "data": [
+            {
+              "id": 1,
+              "type": "user",
+              "attributes": {
+                "name": "John Doe",
+                "created_at": "2024-01-15T10:30:00Z",
+                "tags": [
+                  "developer",
+                  "frontend"
+                ]
+              },
+              "relationships": {
+                "parent_id": null,
+                "children_ids": []
+              }
+            },
+            {
+              "id": 2,
+              "type": "user",
+              "attributes": {
+                "name": "Jane Doe",
+                "created_at": "2024-01-15T10:30:00Z",
+                "tags": [
+                  "designer",
+                  "backend"
+                ]
+              },
+              "relationships": {
+                "parent_id": null,
+                "children_ids": []
+              }
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "per_page": 10,
+            "total": 25,
+            "total_pages": 3
+          },
+          "metadata": {
+            "version": "2.0",
+            "rate_limit": {
+              "remaining": 99,
+              "reset_at": "2024-01-16T10:30:00Z"
+            },
+            "warnings": []
+          }
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "edge_case",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ],
+        "sample_json": {
+          "type": "object",
+          "required": [
+            "transaction_id",
+            "amount",
+            "currency",
+            "parties",
+            "status"
+          ],
+          "properties": {
+            "transaction_id": "TXN-1234567890",
+            "amount": 1500.5,
+            "currency": "USD",
+            "exchange_rate": null,
+            "parties": {
+              "sender": {
+                "account_id": "ACC001",
+                "name": "Alice Corp",
+                "bank_code": "CHASE001"
+              },
+              "receiver": {
+                "account_id": "ACC002",
+                "name": "Bob Inc",
+                "bank_code": null
+              }
+            },
+            "status": "completed",
+            "fees": [
+              {
+                "type": "processing",
+                "amount": 2.5
+              },
+              {
+                "type": "wire",
+                "amount": 15.0
+              }
+            ],
+            "notes": "Monthly payment"
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "edge_case",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ],
+        "sample_json": {
+          "type": "object",
+          "required": [
+            "transaction_id",
+            "amount",
+            "currency",
+            "parties",
+            "status"
+          ],
+          "properties": {
+            "transaction_id": "TXN-1234567890",
+            "amount": 1500.5,
+            "currency": "USD",
+            "exchange_rate": null,
+            "parties": {
+              "sender": {
+                "account_id": "ACC001",
+                "name": "Alice Corp",
+                "bank_code": "CHASE001"
+              },
+              "receiver": {
+                "account_id": "ACC002",
+                "name": "Bob Inc",
+                "bank_code": null
+              }
+            },
+            "status": "completed",
+            "fees": [
+              {
+                "type": "processing",
+                "amount": 2.5
+              },
+              {
+                "type": "wire",
+                "amount": 15.0
+              }
+            ],
+            "notes": "Monthly payment"
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "edge_case",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ],
+        "sample_json": {
+          "type": "object",
+          "required": [
+            "transaction_id",
+            "amount",
+            "currency",
+            "parties",
+            "status"
+          ],
+          "properties": {
+            "transaction_id": "123456789012345",
+            "amount": 0.01,
+            "currency": "EUR",
+            "exchange_rate": 1.08,
+            "parties": {
+              "sender": {
+                "account_id": "1234567890",
+                "name": "John Doe"
+              },
+              "receiver": {
+                "account_id": "9876543210",
+                "name": "Jane Doe"
+              }
+            },
+            "status": "pending",
+            "fees": [],
+            "notes": null
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "schema": "edge_case",
+        "description": "Valid JSON but invented fields not in schema",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ],
+        "sample_json": {
+          "type": "object",
+          "required": [
+            "transaction_id",
+            "amount",
+            "currency",
+            "parties",
+            "status"
+          ],
+          "properties": {
+            "transaction_id": "123456789012345",
+            "amount": 0.01,
+            "currency": "EUR",
+            "exchange_rate": 1.08,
+            "parties": {
+              "sender": {
+                "account_id": "1234567890",
+                "name": "John Doe"
+              },
+              "receiver": {
+                "account_id": "9876543210",
+                "name": "Jane Doe"
+              }
+            },
+            "status": "pending",
+            "fees": [],
+            "notes": null
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "model": "Llama 3.2 3B Instruct v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      },
+      {
+        "model": "Llama 3.2 3B Instruct v1",
+        "schema": "medium",
+        "description": "Valid JSON but wrong field types",
+        "type_errors": [
+          [
+            "preferences.language",
+            "string",
+            "NoneType"
+          ]
+        ]
+      }
+    ]
+  },
+  "raw_results": [
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3636.3518238067627,
+      "raw_response": "```json\n{\n  \"order_id\": \"ORD-12345\",\n  \"customer_name\": \"John Smith\",\n  \"total\": 99.99,\n  \"status\": \"pending\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2962.333917617798,
+      "raw_response": "```json\n{\n  \"order_id\": \"ORD-12345\",\n  \"customer_name\": \"John Smith\",\n  \"total\": 99.99,\n  \"status\": \"pending\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3026.39102935791,
+      "raw_response": "```json\n{\n  \"order_id\": \"ORD-99999\",\n  \"customer_name\": \"Sarah Jones\",\n  \"total\": 250.00,\n  \"status\": \"delivered\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3078.7720680236816,
+      "raw_response": "```json\n{\n  \"order_id\": \"ORD-99999\",\n  \"customer_name\": \"Sarah Jones\",\n  \"total\": 250.00,\n  \"status\": \"delivered\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2783.468008041382,
+      "raw_response": "```json\n{\n  \"order_id\": \"ABC123\",\n  \"customer_name\": \"Test User\",\n  \"total\": 50,\n  \"status\": \"shipped\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2712.641954421997,
+      "raw_response": "```json\n{\n  \"order_id\": \"ABC123\",\n  \"customer_name\": \"Test User\",\n  \"total\": 50,\n  \"status\": \"shipped\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 7362.237930297852,
+      "raw_response": "```json\n{\n  \"user_id\": 42,\n  \"email\": \"john@example.com\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"country\": \"USA\",\n    \"postal_code\": \"10001\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"dark\",\n    \"language\": null\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 6466.8543338775635,
+      "raw_response": "```json\n{\n  \"user_id\": 42,\n  \"email\": \"john@example.com\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"country\": \"USA\",\n    \"postal_code\": \"10001\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"dark\",\n    \"language\": null\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 6606.8291664123535,
+      "raw_response": "```json\n{\n  \"user_id\": 100,\n  \"email\": \"alice@test.org\",\n  \"address\": {\n    \"street\": \"456 Oak Ave\",\n    \"city\": \"London\",\n    \"country\": \"UK\",\n    \"postal_code\": \"SW1A 1AA\"\n  },\n  \"preferences\": {\n    \"newsletter\": false,\n    \"theme\": \"light\",\n    \"language\": \"English\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 6611.123085021973,
+      "raw_response": "```json\n{\n  \"user_id\": 100,\n  \"email\": \"alice@test.org\",\n  \"address\": {\n    \"street\": \"456 Oak Ave\",\n    \"city\": \"London\",\n    \"country\": \"UK\",\n    \"postal_code\": \"SW1A 1AA\"\n  },\n  \"preferences\": {\n    \"newsletter\": false,\n    \"theme\": \"light\",\n    \"language\": \"English\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 6637.157201766968,
+      "raw_response": "```json\n{\n  \"user_id\": 7,\n  \"email\": \"test@demo.com\",\n  \"address\": {\n    \"street\": \"789 Pine Rd\",\n    \"city\": \"Toronto\",\n    \"country\": \"Canada\",\n    \"postal_code\": \"M5V 2T6\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"system\",\n    \"language\": null\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 6482.39803314209,
+      "raw_response": "```json\n{\n  \"user_id\": 7,\n  \"email\": \"test@demo.com\",\n  \"address\": {\n    \"street\": \"789 Pine Rd\",\n    \"city\": \"Toronto\",\n    \"country\": \"Canada\",\n    \"postal_code\": \"M5V 2T6\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"system\",\n    \"language\": null\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "Alice Smith",
+              "created_at": "2023-01-01T00:00:00Z",
+              "tags": [
+                "developer",
+                "frontend"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Bob Johnson",
+              "created_at": "2023-03-15T00:00:00Z",
+              "tags": [
+                "designer",
+                "backend"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T10:31:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 31759.03296470642,
+      "raw_response": "```json\n{\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"Alice Smith\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\n          \"developer\",\n          \"frontend\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"user\",\n      \"attributes\": {\n "
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "Alice Smith",
+              "created_at": "2023-01-01T00:00:00Z",
+              "tags": [
+                "developer",
+                "frontend"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Bob Johnson",
+              "created_at": "2023-03-15T00:00:00Z",
+              "tags": [
+                "designer",
+                "backend"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-15T10:31:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 27526.199102401733,
+      "raw_response": "```json\n{\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"Alice Smith\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\n          \"developer\",\n          \"frontend\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"user\",\n      \"attributes\": {\n "
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found in response"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 32919.15512084961,
+      "raw_response": "```json\n{\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-10-27T10:00:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product A\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\n          \"electronics\",\n          \"gadget\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\",\n      \"attributes\":"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found in response"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 32001.42192840576,
+      "raw_response": "```json\n{\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-10-27T10:00:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product A\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\n          \"electronics\",\n          \"gadget\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\",\n      \"attributes\":"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          }
+        },
+        "status": "completed",
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          },
+          {
+            "type": "wire",
+            "amount": 15.0
+          }
+        ],
+        "notes": "Monthly payment"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 16097.445011138916,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.50,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"ACC001\",\n      \"name\": \"Alice Corp\",\n      \"bank_code\": \"CHASE001\"\n    },\n    \"receiver\": {\n      \"account_id\": \"ACC002\",\n      \"name\": \"Bob Inc\",\n      \"bank_code\": null\n    }\n  },\n  \"status\": \"completed\",\n  \"fees\": [\n    {\n      \"type\": \"processing\",\n      \"amount\": 2.50\n    },\n    {\n      \"type\": \"wire\",\n      \"amount\": 15.00\n  "
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          }
+        },
+        "status": "completed",
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          },
+          {
+            "type": "wire",
+            "amount": 15.0
+          }
+        ],
+        "notes": "Monthly payment"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 14761.991024017334,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.50,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"ACC001\",\n      \"name\": \"Alice Corp\",\n      \"bank_code\": \"CHASE001\"\n    },\n    \"receiver\": {\n      \"account_id\": \"ACC002\",\n      \"name\": \"Bob Inc\",\n      \"bank_code\": null\n    }\n  },\n  \"status\": \"completed\",\n  \"fees\": [\n    {\n      \"type\": \"processing\",\n      \"amount\": 2.50\n    },\n    {\n      \"type\": \"wire\",\n      \"amount\": 15.00\n  "
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN1234567890123",
+        "amount": 0.01,
+        "currency": "EUR",
+        "exchange_rate": 1.08,
+        "parties": {
+          "sender": {
+            "account_id": "SNDR123",
+            "name": "Sender Account"
+          },
+          "receiver": {
+            "account_id": "RCVR456",
+            "name": "Receiver Account"
+          }
+        },
+        "status": "pending",
+        "fees": [],
+        "notes": null
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 11216.038703918457,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN1234567890123\",\n  \"amount\": 0.01,\n  \"currency\": \"EUR\",\n  \"exchange_rate\": 1.08,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"SNDR123\",\n      \"name\": \"Sender Account\"\n    },\n    \"receiver\": {\n      \"account_id\": \"RCVR456\",\n      \"name\": \"Receiver Account\"\n    }\n  },\n  \"status\": \"pending\",\n  \"fees\": [],\n  \"notes\": null\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN1234567890123",
+        "amount": 0.01,
+        "currency": "EUR",
+        "exchange_rate": 1.08,
+        "parties": {
+          "sender": {
+            "account_id": "SNDR123",
+            "name": "Sender Account"
+          },
+          "receiver": {
+            "account_id": "RCVR456",
+            "name": "Receiver Account"
+          }
+        },
+        "status": "pending",
+        "fees": [],
+        "notes": null
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 10215.258121490479,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN1234567890123\",\n  \"amount\": 0.01,\n  \"currency\": \"EUR\",\n  \"exchange_rate\": 1.08,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"SNDR123\",\n      \"name\": \"Sender Account\"\n    },\n    \"receiver\": {\n      \"account_id\": \"RCVR456\",\n      \"name\": \"Receiver Account\"\n    }\n  },\n  \"status\": \"pending\",\n  \"fees\": [],\n  \"notes\": null\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "required": [
+          "order_id",
+          "customer_name",
+          "total"
+        ],
+        "properties": {
+          "order_id": "ORD-12345",
+          "customer_name": "John Smith",
+          "total": 99.99,
+          "status": "pending"
+        },
+        "additionalProperties": false
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "order_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "customer_name",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "total",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 5254.085063934326,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"order_id\",\n    \"customer_name\",\n    \"total\"\n  ],\n  \"properties\": {\n    \"order_id\": \"ORD-12345\",\n    \"customer_name\": \"John Smith\",\n    \"total\": 99.99,\n    \"status\": \"pending\"\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "required": [
+          "order_id",
+          "customer_name",
+          "total"
+        ],
+        "properties": {
+          "order_id": "ORD-12345",
+          "customer_name": "John Smith",
+          "total": 99.99,
+          "status": "pending"
+        },
+        "additionalProperties": false
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "order_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "customer_name",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "total",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 3701.9600868225098,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"order_id\",\n    \"customer_name\",\n    \"total\"\n  ],\n  \"properties\": {\n    \"order_id\": \"ORD-12345\",\n    \"customer_name\": \"John Smith\",\n    \"total\": 99.99,\n    \"status\": \"pending\"\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2013.9009952545166,
+      "raw_response": "```json\n{\n  \"order_id\": \"ORD-99999\",\n  \"customer_name\": \"Sarah Jones\",\n  \"total\": 250.0,\n  \"status\": \"delivered\"\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1981.2347888946533,
+      "raw_response": "```json\n{\n  \"order_id\": \"ORD-99999\",\n  \"customer_name\": \"Sarah Jones\",\n  \"total\": 250.0,\n  \"status\": \"delivered\"\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "required": [
+          "order_id",
+          "customer_name",
+          "total"
+        ],
+        "properties": {
+          "order_id": "ABC123",
+          "customer_name": "Test User",
+          "total": 50,
+          "status": "shipped"
+        }
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "order_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "customer_name",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "total",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties"
+      ],
+      "latency_ms": 3304.8369884490967,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"order_id\",\n    \"customer_name\",\n    \"total\"\n  ],\n  \"properties\": {\n    \"order_id\": \"ABC123\",\n    \"customer_name\": \"Test User\",\n    \"total\": 50,\n    \"status\": \"shipped\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "required": [
+          "order_id",
+          "customer_name",
+          "total"
+        ],
+        "properties": {
+          "order_id": "ABC123",
+          "customer_name": "Test User",
+          "total": 50,
+          "status": "shipped"
+        }
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "order_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "customer_name",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "total",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties"
+      ],
+      "latency_ms": 3231.0688495635986,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"order_id\",\n    \"customer_name\",\n    \"total\"\n  ],\n  \"properties\": {\n    \"order_id\": \"ABC123\",\n    \"customer_name\": \"Test User\",\n    \"total\": 50,\n    \"status\": \"shipped\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4694.356918334961,
+      "raw_response": "```json\n{\n  \"user_id\": 42,\n  \"email\": \"john@example.com\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"country\": \"USA\",\n    \"postal_code\": \"10001\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"dark\",\n    \"language\": \"en\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4437.594890594482,
+      "raw_response": "```json\n{\n  \"user_id\": 42,\n  \"email\": \"john@example.com\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"country\": \"USA\",\n    \"postal_code\": \"10001\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"dark\",\n    \"language\": \"en\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4453.248977661133,
+      "raw_response": "```json\n{\n  \"user_id\": 100,\n  \"email\": \"alice@test.org\",\n  \"address\": {\n    \"street\": \"456 Oak Ave\",\n    \"city\": \"London\",\n    \"country\": \"UK\",\n    \"postal_code\": \"SW1A 1AA\"\n  },\n  \"preferences\": {\n    \"newsletter\": false,\n    \"theme\": \"light\",\n    \"language\": \"English\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4474.666118621826,
+      "raw_response": "```json\n{\n  \"user_id\": 100,\n  \"email\": \"alice@test.org\",\n  \"address\": {\n    \"street\": \"456 Oak Ave\",\n    \"city\": \"London\",\n    \"country\": \"UK\",\n    \"postal_code\": \"SW1A 1AA\"\n  },\n  \"preferences\": {\n    \"newsletter\": false,\n    \"theme\": \"light\",\n    \"language\": \"English\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4408.701181411743,
+      "raw_response": "```json\n{\n  \"user_id\": 7,\n  \"email\": \"test@demo.com\",\n  \"address\": {\n    \"street\": \"789 Pine Rd\",\n    \"city\": \"Toronto\",\n    \"country\": \"Canada\",\n    \"postal_code\": \"M5V 2T6\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"system\",\n    \"language\": \"en\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4363.187074661255,
+      "raw_response": "```json\n{\n  \"user_id\": 7,\n  \"email\": \"test@demo.com\",\n  \"address\": {\n    \"street\": \"789 Pine Rd\",\n    \"city\": \"Toronto\",\n    \"country\": \"Canada\",\n    \"postal_code\": \"M5V 2T6\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"system\",\n    \"language\": \"en\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "John Doe",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "developer",
+                "frontend"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Jane Doe",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "designer",
+                "backend"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-16T10:30:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type"
+      ],
+      "latency_ms": 20599.220991134644,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"John Doe\",\n        \"created_at\": \"2024-01-15T10:30:00Z\",\n        \"tags\": [\n          \"developer\",\n          \"frontend\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"user\",\n      "
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "request_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "data": [
+          {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+              "name": "John Doe",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "developer",
+                "frontend"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          },
+          {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+              "name": "Jane Doe",
+              "created_at": "2024-01-15T10:30:00Z",
+              "tags": [
+                "designer",
+                "backend"
+              ]
+            },
+            "relationships": {
+              "parent_id": null,
+              "children_ids": []
+            }
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "per_page": 10,
+          "total": 25,
+          "total_pages": 3
+        },
+        "metadata": {
+          "version": "2.0",
+          "rate_limit": {
+            "remaining": 99,
+            "reset_at": "2024-01-16T10:30:00Z"
+          },
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type"
+      ],
+      "latency_ms": 20278.71012687683,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"John Doe\",\n        \"created_at\": \"2024-01-15T10:30:00Z\",\n        \"tags\": [\n          \"developer\",\n          \"frontend\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"user\",\n      "
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found in response"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 23266.1771774292,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-10-27T14:15:30Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 1\",\n        \"created_at\": \"2023-10-26T10:00:00Z\",\n        \"tags\": [\n          \"electronics\",\n          \"laptop\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\","
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found in response"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 23575.541019439697,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-10-27T14:15:30Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 1\",\n        \"created_at\": \"2023-10-26T10:00:00Z\",\n        \"tags\": [\n          \"electronics\",\n          \"laptop\"\n        ]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\","
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "required": [
+          "transaction_id",
+          "amount",
+          "currency",
+          "parties",
+          "status"
+        ],
+        "properties": {
+          "transaction_id": "TXN-1234567890",
+          "amount": 1500.5,
+          "currency": "USD",
+          "exchange_rate": null,
+          "parties": {
+            "sender": {
+              "account_id": "ACC001",
+              "name": "Alice Corp",
+              "bank_code": "CHASE001"
+            },
+            "receiver": {
+              "account_id": "ACC002",
+              "name": "Bob Inc",
+              "bank_code": null
+            }
+          },
+          "status": "completed",
+          "fees": [
+            {
+              "type": "processing",
+              "amount": 2.5
+            },
+            {
+              "type": "wire",
+              "amount": 15.0
+            }
+          ],
+          "notes": "Monthly payment"
+        },
+        "additionalProperties": false
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "transaction_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "amount",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "currency",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "parties",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "status",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 13271.175861358643,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"transaction_id\",\n    \"amount\",\n    \"currency\",\n    \"parties\",\n    \"status\"\n  ],\n  \"properties\": {\n    \"transaction_id\": \"TXN-1234567890\",\n    \"amount\": 1500.50,\n    \"currency\": \"USD\",\n    \"exchange_rate\": null,\n    \"parties\": {\n      \"sender\": {\n        \"account_id\": \"ACC001\",\n        \"name\": \"Alice Corp\",\n        \"bank_code\": \"CHASE001\"\n      },\n      \"receiver\": {\n        \"account_id\": \"ACC002\",\n        \"name\": \"Bob Inc\",\n        \"bank_code\": "
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "required": [
+          "transaction_id",
+          "amount",
+          "currency",
+          "parties",
+          "status"
+        ],
+        "properties": {
+          "transaction_id": "TXN-1234567890",
+          "amount": 1500.5,
+          "currency": "USD",
+          "exchange_rate": null,
+          "parties": {
+            "sender": {
+              "account_id": "ACC001",
+              "name": "Alice Corp",
+              "bank_code": "CHASE001"
+            },
+            "receiver": {
+              "account_id": "ACC002",
+              "name": "Bob Inc",
+              "bank_code": null
+            }
+          },
+          "status": "completed",
+          "fees": [
+            {
+              "type": "processing",
+              "amount": 2.5
+            },
+            {
+              "type": "wire",
+              "amount": 15.0
+            }
+          ],
+          "notes": "Monthly payment"
+        },
+        "additionalProperties": false
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "transaction_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "amount",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "currency",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "parties",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "status",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 13083.162307739258,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"transaction_id\",\n    \"amount\",\n    \"currency\",\n    \"parties\",\n    \"status\"\n  ],\n  \"properties\": {\n    \"transaction_id\": \"TXN-1234567890\",\n    \"amount\": 1500.50,\n    \"currency\": \"USD\",\n    \"exchange_rate\": null,\n    \"parties\": {\n      \"sender\": {\n        \"account_id\": \"ACC001\",\n        \"name\": \"Alice Corp\",\n        \"bank_code\": \"CHASE001\"\n      },\n      \"receiver\": {\n        \"account_id\": \"ACC002\",\n        \"name\": \"Bob Inc\",\n        \"bank_code\": "
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "required": [
+          "transaction_id",
+          "amount",
+          "currency",
+          "parties",
+          "status"
+        ],
+        "properties": {
+          "transaction_id": "123456789012345",
+          "amount": 0.01,
+          "currency": "EUR",
+          "exchange_rate": 1.08,
+          "parties": {
+            "sender": {
+              "account_id": "1234567890",
+              "name": "John Doe"
+            },
+            "receiver": {
+              "account_id": "9876543210",
+              "name": "Jane Doe"
+            }
+          },
+          "status": "pending",
+          "fees": [],
+          "notes": null
+        },
+        "additionalProperties": false
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "transaction_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "amount",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "currency",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "parties",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "status",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 10013.974905014038,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"transaction_id\",\n    \"amount\",\n    \"currency\",\n    \"parties\",\n    \"status\"\n  ],\n  \"properties\": {\n    \"transaction_id\": \"123456789012345\",\n    \"amount\": 0.01,\n    \"currency\": \"EUR\",\n    \"exchange_rate\": 1.08,\n    \"parties\": {\n      \"sender\": {\n        \"account_id\": \"1234567890\",\n        \"name\": \"John Doe\"\n      },\n      \"receiver\": {\n        \"account_id\": \"9876543210\",\n        \"name\": \"Jane Doe\"\n      }\n    },\n    \"status\": \"pending\",\n    \"fees\""
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "type": "object",
+        "required": [
+          "transaction_id",
+          "amount",
+          "currency",
+          "parties",
+          "status"
+        ],
+        "properties": {
+          "transaction_id": "123456789012345",
+          "amount": 0.01,
+          "currency": "EUR",
+          "exchange_rate": 1.08,
+          "parties": {
+            "sender": {
+              "account_id": "1234567890",
+              "name": "John Doe"
+            },
+            "receiver": {
+              "account_id": "9876543210",
+              "name": "Jane Doe"
+            }
+          },
+          "status": "pending",
+          "fees": [],
+          "notes": null
+        },
+        "additionalProperties": false
+      },
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "transaction_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "amount",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "currency",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "parties",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "status",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 9745.795011520386,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"transaction_id\",\n    \"amount\",\n    \"currency\",\n    \"parties\",\n    \"status\"\n  ],\n  \"properties\": {\n    \"transaction_id\": \"123456789012345\",\n    \"amount\": 0.01,\n    \"currency\": \"EUR\",\n    \"exchange_rate\": 1.08,\n    \"parties\": {\n      \"sender\": {\n        \"account_id\": \"1234567890\",\n        \"name\": \"John Doe\"\n      },\n      \"receiver\": {\n        \"account_id\": \"9876543210\",\n        \"name\": \"Jane Doe\"\n      }\n    },\n    \"status\": \"pending\",\n    \"fees\""
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2183.554172515869,
+      "raw_response": "```\n{\n  \"order_id\": \"ORD-12345\",\n  \"customer_name\": \"John Smith\",\n  \"total\": 99.99,\n  \"status\": \"pending\"\n}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-12345",
+        "customer_name": "John Smith",
+        "total": 99.99,
+        "status": "pending"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1766.1411762237549,
+      "raw_response": "```\n{\n  \"order_id\": \"ORD-12345\",\n  \"customer_name\": \"John Smith\",\n  \"total\": 99.99,\n  \"status\": \"pending\"\n}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1278.4771919250488,
+      "raw_response": "{\"order_id\":\"ORD-99999\",\"customer_name\":\"Sarah Jones\",\"total\":250.0,\"status\":\"delivered\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ORD-99999",
+        "customer_name": "Sarah Jones",
+        "total": 250.0,
+        "status": "delivered"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1204.6890258789062,
+      "raw_response": "{\"order_id\":\"ORD-99999\",\"customer_name\":\"Sarah Jones\",\"total\":250.0,\"status\":\"delivered\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1564.5802021026611,
+      "raw_response": "{\n  \"order_id\": \"ABC123\",\n  \"customer_name\": \"Test User\",\n  \"total\": 50,\n  \"status\": \"shipped\"\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "simple",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "order_id": "ABC123",
+        "customer_name": "Test User",
+        "total": 50,
+        "status": "shipped"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1533.4138870239258,
+      "raw_response": "{\n  \"order_id\": \"ABC123\",\n  \"customer_name\": \"Test User\",\n  \"total\": 50,\n  \"status\": \"shipped\"\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4738.442897796631,
+      "raw_response": "```\n{\n  \"user_id\": 42,\n  \"email\": \"john@example.com\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"country\": \"USA\",\n    \"postal_code\": \"10001\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"dark\",\n    \"language\": \"en\"\n  }\n}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 42,
+        "email": "john@example.com",
+        "address": {
+          "street": "123 Main St",
+          "city": "New York",
+          "country": "USA",
+          "postal_code": "10001"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "dark",
+          "language": "en"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4051.3360500335693,
+      "raw_response": "```\n{\n  \"user_id\": 42,\n  \"email\": \"john@example.com\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"country\": \"USA\",\n    \"postal_code\": \"10001\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"dark\",\n    \"language\": \"en\"\n  }\n}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4188.277006149292,
+      "raw_response": "```\n{\n  \"user_id\": 100,\n  \"email\": \"alice@test.org\",\n  \"address\": {\n    \"street\": \"456 Oak Ave\",\n    \"city\": \"London\",\n    \"country\": \"UK\",\n    \"postal_code\": \"SW1A 1AA\"\n  },\n  \"preferences\": {\n    \"newsletter\": false,\n    \"theme\": \"light\",\n    \"language\": \"English\"\n  }\n}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 100,
+        "email": "alice@test.org",
+        "address": {
+          "street": "456 Oak Ave",
+          "city": "London",
+          "country": "UK",
+          "postal_code": "SW1A 1AA"
+        },
+        "preferences": {
+          "newsletter": false,
+          "theme": "light",
+          "language": "English"
+        }
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4157.354831695557,
+      "raw_response": "```\n{\n  \"user_id\": 100,\n  \"email\": \"alice@test.org\",\n  \"address\": {\n    \"street\": \"456 Oak Ave\",\n    \"city\": \"London\",\n    \"country\": \"UK\",\n    \"postal_code\": \"SW1A 1AA\"\n  },\n  \"preferences\": {\n    \"newsletter\": false,\n    \"theme\": \"light\",\n    \"language\": \"English\"\n  }\n}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 4101.263761520386,
+      "raw_response": "{\n  \"user_id\": 7,\n  \"email\": \"test@demo.com\",\n  \"address\": {\n    \"street\": \"789 Pine Rd\",\n    \"city\": \"Toronto\",\n    \"country\": \"Canada\",\n    \"postal_code\": \"M5V 2T6\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"system\",\n    \"language\": null\n  }\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "medium",
+      "prompt_index": 2,
+      "is_valid_json": true,
+      "parsed_json": {
+        "user_id": 7,
+        "email": "test@demo.com",
+        "address": {
+          "street": "789 Pine Rd",
+          "city": "Toronto",
+          "country": "Canada",
+          "postal_code": "M5V 2T6"
+        },
+        "preferences": {
+          "newsletter": true,
+          "theme": "system",
+          "language": null
+        }
+      },
+      "errors": [
+        {
+          "type": "wrong_type",
+          "path": "preferences.language",
+          "expected": "string",
+          "actual": "NoneType"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 4083.8773250579834,
+      "raw_response": "{\n  \"user_id\": 7,\n  \"email\": \"test@demo.com\",\n  \"address\": {\n    \"street\": \"789 Pine Rd\",\n    \"city\": \"Toronto\",\n    \"country\": \"Canada\",\n    \"postal_code\": \"M5V 2T6\"\n  },\n  \"preferences\": {\n    \"newsletter\": true,\n    \"theme\": \"system\",\n    \"language\": null\n  }\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "Found JSON-like structure but failed to parse: Expecting ',' delimiter: line 19 column 15 (char 410)"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 28185.46986579895,
+      "raw_response": "{\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"John Doe\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\"admin\", \"moderator\"]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2 Av6orph\": {\n            \"data\"::\",\n\u544a\":ften\": KomCon\",\n\u0113 AvSC\",\n },\n,\n\",\nbwiject Dalton-lev"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "complex",
+      "prompt_index": 0,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "Found JSON-like structure but failed to parse: Invalid control character at: line 20 column 3 (char 413)"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 28714.364290237427,
+      "raw_response": "{\n  \"request_id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"user\",\n      \"attributes\": {\n        \"name\": \"John Doe\",\n        \"created_at\": \"2023-01-01T00:00:00Z\",\n        \"tags\": [\"admin\", \"moderator\"]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n\",\n            \".googleapis\": {\n\",\n            \" reverted\":\u30b1\u30c3\u30c8 Phillip Run,\n\ufffd::,\n.Comm64 "
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "No JSON structure found in response"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 27658.654928207397,
+      "raw_response": "{\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-02-20T14:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 1\",\n        \"created_at\": \"2023-02-19T12:00:00Z\",\n        \"tags\": [\"tag1\", \"tag2\"]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 2\",\n        \"create"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "complex",
+      "prompt_index": 1,
+      "is_valid_json": false,
+      "parsed_json": null,
+      "errors": [
+        {
+          "type": "parse_failure",
+          "path": "",
+          "expected": "valid JSON",
+          "actual": "Found JSON-like structure but failed to parse: Expecting ':' delimiter: line 24 column 15 (char 535)"
+        }
+      ],
+      "hallucinated_fields": [],
+      "latency_ms": 28235.013961791992,
+      "raw_response": "{\n  \"request_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"timestamp\": \"2023-02-20T14:30:00Z\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 1\",\n        \"created_at\": \"2023-02-19T12:00:00Z\",\n        \"tags\": [\"tag1\", \"tag2\"]\n      },\n      \"relationships\": {\n        \"parent_id\": null,\n        \"children_ids\": []\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"product\",\n      \"attributes\": {\n        \"name\": \"Product 2\",\n        \"create"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          }
+        },
+        "status": "completed",
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          },
+          {
+            "type": "wire",
+            "amount": 15.0
+          }
+        ],
+        "notes": "Monthly payment"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 10228.614091873169,
+      "raw_response": "{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.5,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"ACC001\",\n      \"name\": \"Alice Corp\",\n      \"bank_code\": \"CHASE001\"\n    },\n    \"receiver\": {\n      \"account_id\": \"ACC002\",\n      \"name\": \"Bob Inc\",\n      \"bank_code\": null\n    }\n  },\n  \"status\": \"completed\",\n  \"fees\": [\n    {\n      \"type\": \"processing\",\n      \"amount\": 2.5\n    },\n    {\n      \"type\": \"wire\",\n      \"amount\": 15.0\n    }\n  ],\n  "
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "edge_case",
+      "prompt_index": 0,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "TXN-1234567890",
+        "amount": 1500.5,
+        "currency": "USD",
+        "exchange_rate": null,
+        "parties": {
+          "sender": {
+            "account_id": "ACC001",
+            "name": "Alice Corp",
+            "bank_code": "CHASE001"
+          },
+          "receiver": {
+            "account_id": "ACC002",
+            "name": "Bob Inc",
+            "bank_code": null
+          }
+        },
+        "status": "completed",
+        "fees": [
+          {
+            "type": "processing",
+            "amount": 2.5
+          },
+          {
+            "type": "wire",
+            "amount": 15.0
+          }
+        ],
+        "notes": "Monthly payment"
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 9171.25916481018,
+      "raw_response": "{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.5,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"ACC001\",\n      \"name\": \"Alice Corp\",\n      \"bank_code\": \"CHASE001\"\n    },\n    \"receiver\": {\n      \"account_id\": \"ACC002\",\n      \"name\": \"Bob Inc\",\n      \"bank_code\": null\n    }\n  },\n  \"status\": \"completed\",\n  \"fees\": [\n    {\n      \"type\": \"processing\",\n      \"amount\": 2.5\n    },\n    {\n      \"type\": \"wire\",\n      \"amount\": 15.0\n    }\n  ],\n  "
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "123456789012345",
+        "amount": 0.01,
+        "currency": "EUR",
+        "exchange_rate": 1.08,
+        "parties": {
+          "sender": {
+            "account_id": "1234567890",
+            "name": "John Doe"
+          },
+          "receiver": {
+            "account_id": "9876543210",
+            "name": "Jane Doe"
+          }
+        },
+        "status": "pending",
+        "fees": [],
+        "notes": null
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 7216.8731689453125,
+      "raw_response": "{\n  \"transaction_id\": \"123456789012345\",\n  \"amount\": 0.01,\n  \"currency\": \"EUR\",\n  \"exchange_rate\": 1.08,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"1234567890\",\n      \"name\": \"John Doe\"\n    },\n    \"receiver\": {\n      \"account_id\": \"9876543210\",\n      \"name\": \"Jane Doe\"\n    }\n  },\n  \"status\": \"pending\",\n  \"fees\": [],\n  \"notes\": null\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "schema": "edge_case",
+      "prompt_index": 1,
+      "is_valid_json": true,
+      "parsed_json": {
+        "transaction_id": "123456789012345",
+        "amount": 0.01,
+        "currency": "EUR",
+        "exchange_rate": 1.08,
+        "parties": {
+          "sender": {
+            "account_id": "1234567890",
+            "name": "John Doe"
+          },
+          "receiver": {
+            "account_id": "9876543210",
+            "name": "Jane Doe"
+          }
+        },
+        "status": "pending",
+        "fees": [],
+        "notes": null
+      },
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 6390.890121459961,
+      "raw_response": "{\n  \"transaction_id\": \"123456789012345\",\n  \"amount\": 0.01,\n  \"currency\": \"EUR\",\n  \"exchange_rate\": 1.08,\n  \"parties\": {\n    \"sender\": {\n      \"account_id\": \"1234567890\",\n      \"name\": \"John Doe\"\n    },\n    \"receiver\": {\n      \"account_id\": \"9876543210\",\n      \"name\": \"Jane Doe\"\n    }\n  },\n  \"status\": \"pending\",\n  \"fees\": [],\n  \"notes\": null\n}"
+    }
+  ]
+}

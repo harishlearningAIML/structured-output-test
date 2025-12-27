@@ -1,0 +1,1156 @@
+{
+  "metadata": {
+    "timestamp": "20251227_153656",
+    "used_kb": false,
+    "iterations": 1,
+    "models": [
+      "Gemma 3 4B IT v1",
+      "Gemma 2 2B IT v2",
+      "Llama 3.2 3B Instruct v1"
+    ]
+  },
+  "report": {
+    "summary": {
+      "total_tests": 42,
+      "models_tested": [
+        "Llama 3.2 3B Instruct v1",
+        "Gemma 3 4B IT v1",
+        "Gemma 2 2B IT v2"
+      ],
+      "used_kb": false,
+      "overall_parse_success": 100.0,
+      "overall_compliance": 76.19047619047619,
+      "overall_hallucination": 23.809523809523807,
+      "sources": [
+        "JSONSchemaBench",
+        "SchemaBench",
+        "StructuredRAG"
+      ],
+      "total_smoking_guns": 10
+    },
+    "by_model": {
+      "Llama 3.2 3B Instruct v1": {
+        "total_tests": 14,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 100.0,
+        "hallucination_rate": 0.0,
+        "error_breakdown": {},
+        "avg_latency_ms": 1863.766244479588
+      },
+      "Gemma 3 4B IT v1": {
+        "total_tests": 14,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 100.0,
+        "hallucination_rate": 0.0,
+        "error_breakdown": {},
+        "avg_latency_ms": 3590.171320097787
+      },
+      "Gemma 2 2B IT v2": {
+        "total_tests": 14,
+        "parse_success_rate": 100.0,
+        "full_compliance_rate": 28.57142857142857,
+        "hallucination_rate": 71.42857142857143,
+        "error_breakdown": {
+          "missing_field": 22,
+          "hallucinated_field": 39
+        },
+        "avg_latency_ms": 4134.467005729675
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 12,
+        "parse_success": 100.0,
+        "full_compliance": 83.33333333333334,
+        "hallucination_rate": 16.666666666666664
+      },
+      "ultra": {
+        "total": 3,
+        "parse_success": 100.0,
+        "full_compliance": 66.66666666666666,
+        "hallucination_rate": 33.33333333333333
+      },
+      "medium": {
+        "total": 15,
+        "parse_success": 100.0,
+        "full_compliance": 73.33333333333333,
+        "hallucination_rate": 26.666666666666668
+      },
+      "hard": {
+        "total": 12,
+        "parse_success": 100.0,
+        "full_compliance": 75.0,
+        "hallucination_rate": 25.0
+      }
+    },
+    "by_source": {
+      "JSONSchemaBench": {
+        "total": 12,
+        "parse_success": 100.0,
+        "full_compliance": 75.0
+      },
+      "SchemaBench": {
+        "total": 12,
+        "parse_success": 100.0,
+        "full_compliance": 66.66666666666666
+      },
+      "StructuredRAG": {
+        "total": 18,
+        "parse_success": 100.0,
+        "full_compliance": 83.33333333333334
+      }
+    },
+    "smoking_guns": [
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "SchemaBench/complex_schema",
+        "difficulty": "hard",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "SchemaBench/custom_formats",
+        "difficulty": "medium",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "SchemaBench/escape_translation",
+        "difficulty": "hard",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "SchemaBench/base64_format",
+        "difficulty": "medium",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "StructuredRAG/integer",
+        "difficulty": "easy",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "StructuredRAG/list_strings",
+        "difficulty": "medium",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "StructuredRAG/list_composite",
+        "difficulty": "hard",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "JSONSchemaBench/easy",
+        "difficulty": "easy",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "JSONSchemaBench/medium",
+        "difficulty": "medium",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties",
+          "additionalProperties"
+        ]
+      },
+      {
+        "model": "Gemma 2 2B IT v2",
+        "source": "JSONSchemaBench/ultra",
+        "difficulty": "ultra",
+        "description": "Valid JSON but invented fields",
+        "hallucinated_fields": [
+          "type",
+          "required",
+          "properties"
+        ]
+      }
+    ]
+  },
+  "raw_results": [
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "SchemaBench/complex_schema",
+      "task": "complex_schema",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4520.224094390869,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"user\": {\n    \"name\": \"Alice\",\n    \"email\": \"alice@example.com\",\n    \"age\": 30\n  },\n  \"settings\": {\n    \"theme\": \"dark\",\n    \"notifications\": true\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "SchemaBench/custom_formats",
+      "task": "custom_formats",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 3448.5371112823486,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"phone\": \"555-123-4567\",\n  \"password\": \"SecurePass123\",\n  \"file_path\": \"/home/user/documents/file.txt\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "SchemaBench/escape_translation",
+      "task": "escape_translation",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2353.2700538635254,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"message\": \"He said \\\"Hello World\\\"\",\n  \"code_snippet\": \"C:\\\\Users\\\\Admin\\\\file.txt\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "SchemaBench/base64_format",
+      "task": "base64_format",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2084.6681594848633,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"data\": \"SGVsbG8gV29ybGQ=\",\n  \"encoding\": \"base64\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/string",
+      "task": "string_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1130.1319599151611,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"answer\": \"Paris\"\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/integer",
+      "task": "integer_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 908.2040786743164,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"count\": 7\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/boolean",
+      "task": "boolean_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 875.6909370422363,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"result\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/list_strings",
+      "task": "list_strings",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2487.352132797241,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"items\": [\n    \"Mercury\",\n    \"Venus\",\n    \"Earth\",\n    \"Mars\",\n    \"Jupiter\"\n  ]\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/composite",
+      "task": "composite_object",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1617.316722869873,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"answer\": \"1945\",\n  \"confidence\": 0.99\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "StructuredRAG/list_composite",
+      "task": "list_composite",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4819.849967956543,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"answers\": [\n    {\n      \"answer\": \"Python\",\n      \"confidence\": 0.95\n    },\n    {\n      \"answer\": \"JavaScript\",\n      \"confidence\": 0.90\n    },\n    {\n      \"answer\": \"Java\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "JSONSchemaBench/easy",
+      "task": "simple_product",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1967.6811695098877,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"name\": \"Widget\",\n  \"price\": 29.99,\n  \"in_stock\": true\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "JSONSchemaBench/medium",
+      "task": "order_with_shipping",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4700.416088104248,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"order_id\": \"ORD-001\",\n  \"customer\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\"\n  },\n  \"shipping\": {\n    \"method\": \"express\",\n    \"address\": \"123 Main St\"\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "JSONSchemaBench/hard",
+      "task": "api_response",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 8422.44005203247,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Item A\",\n      \"tags\": [\n        \"new\",\n        \"featured\"\n      ]\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Item B\",\n      \"tags\": [\n        \"sale\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"page\": 1,\n    \"total\": 50\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 3 4B IT v1",
+      "source": "JSONSchemaBench/ultra",
+      "task": "financial_record",
+      "difficulty": "ultra",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 10926.615953445435,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.50,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"id\": \"S001\",\n      \"name\": \"Alice Corp\",\n      \"bank\": \"Chase\"\n    },\n    \"receiver\": {\n      \"id\": \"R001\",\n      \"name\": \"Bob Inc\",\n      \"bank\": null\n    }\n  },\n  \"notes\": \"Monthly payment\"\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "SchemaBench/complex_schema",
+      "task": "complex_schema",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "user",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "settings",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 10678.770780563354,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"user\",\n    \"settings\"\n  ],\n  \"properties\": {\n    \"user\": {\n      \"type\": \"object\",\n      \"required\": [\n        \"name\",\n        \"email\"\n      ],\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\",\n          \"minLength\": 1\n        },\n        \"email\": {\n          \"type\": \"string\"\n        },\n        \"age\": {\n          \"type\": \"integer\",\n          \"minimum\": 0\n        }\n      },\n      \"additionalProperties\": false\n    },\n    \"settings"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "SchemaBench/custom_formats",
+      "task": "custom_formats",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "phone",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "password",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "file_path",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 4050.246000289917,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"phone\",\n    \"password\",\n    \"file_path\"\n  ],\n  \"properties\": {\n    \"phone\": \"555-123-4567\",\n    \"password\": \"SecurePass123\",\n    \"file_path\": \"/home/user/documents/file.txt\"\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "SchemaBench/escape_translation",
+      "task": "escape_translation",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "message",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "code_snippet",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 3836.8279933929443,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"message\",\n    \"code_snippet\"\n  ],\n  \"properties\": {\n    \"message\": {\n      \"type\": \"string\",\n      \"description\": \"A message containing quotes\"\n    },\n    \"code_snippet\": {\n      \"type\": \"string\",\n      \"description\": \"A code snippet with backslashes\"\n    }\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "SchemaBench/base64_format",
+      "task": "base64_format",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "data",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "encoding",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 2718.1107997894287,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"data\",\n    \"encoding\"\n  ],\n  \"properties\": {\n    \"data\": \"SGVsbG8gV29ybGQ=\",\n    \"encoding\": \"base64\"\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/string",
+      "task": "string_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 715.2390480041504,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"answer\": \"Paris\"\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/integer",
+      "task": "integer_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "count",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 2417.525053024292,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"count\"\n  ],\n  \"properties\": {\n    \"count\": {\n      \"type\": \"integer\",\n      \"value\": 7\n    }\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/boolean",
+      "task": "boolean_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 616.8339252471924,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"result\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/list_strings",
+      "task": "list_strings",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "items",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 3232.0971488952637,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"items\"\n  ],\n  \"properties\": {\n    \"items\": [\n      \"Mercury\",\n      \"Venus\",\n      \"Earth\",\n      \"Mars\",\n      \"Jupiter\",\n      \"Saturn\",\n      \"Uranus\",\n      \"Neptune\"\n    ]\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/composite",
+      "task": "composite_object",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1103.703260421753,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"answer\": \"1945\",\n  \"confidence\": 0.99\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "StructuredRAG/list_composite",
+      "task": "list_composite",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "answers",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 4266.757965087891,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"answers\"\n  ],\n  \"properties\": {\n    \"answers\": [\n      {\n        \"answer\": \"Python\",\n        \"confidence\": 0.8\n      },\n      {\n        \"answer\": \"Java\",\n        \"confidence\": 0.7\n      },\n      {\n        \"answer\": \"JavaScript\",\n        \"confidence\": 0.6\n      }\n    ]\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "JSONSchemaBench/easy",
+      "task": "simple_product",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "name",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "price",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "in_stock",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 2877.4070739746094,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"name\",\n    \"price\",\n    \"in_stock\"\n  ],\n  \"properties\": {\n    \"name\": \"Widget\",\n    \"price\": 29.99,\n    \"in_stock\": true\n  },\n  \"additionalProperties\": false\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "JSONSchemaBench/medium",
+      "task": "order_with_shipping",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "order_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "customer",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "shipping",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "additionalProperties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties",
+        "additionalProperties"
+      ],
+      "latency_ms": 7803.325176239014,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"order_id\",\n    \"customer\",\n    \"shipping\"\n  ],\n  \"properties\": {\n    \"order_id\": \"ORD-001\",\n    \"customer\": {\n      \"type\": \"object\",\n      \"required\": [\n        \"name\",\n        \"email\"\n      ],\n      \"properties\": {\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\"\n      },\n      \"additionalProperties\": false\n    },\n    \"shipping\": {\n      \"type\": \"object\",\n      \"required\": [\n        \"method\",\n        \"address\"\n      ],\n      \"pr"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "JSONSchemaBench/hard",
+      "task": "api_response",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4927.432060241699,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Item A\",\n      \"tags\": [\n        \"new\",\n        \"featured\"\n      ]\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Item B\",\n      \"tags\": [\n        \"sale\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"page\": 1,\n    \"total\": 50\n  }\n}\n```"
+    },
+    {
+      "model": "Gemma 2 2B IT v2",
+      "source": "JSONSchemaBench/ultra",
+      "task": "financial_record",
+      "difficulty": "ultra",
+      "is_valid_json": true,
+      "errors": [
+        {
+          "type": "missing_field",
+          "path": "transaction_id",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "amount",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "currency",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "missing_field",
+          "path": "parties",
+          "expected": "required field",
+          "actual": "missing"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "type",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "required",
+          "expected": "not in schema",
+          "actual": "present"
+        },
+        {
+          "type": "hallucinated_field",
+          "path": "properties",
+          "expected": "not in schema",
+          "actual": "present"
+        }
+      ],
+      "hallucinated_fields": [
+        "type",
+        "required",
+        "properties"
+      ],
+      "latency_ms": 8638.261795043945,
+      "used_kb": false,
+      "raw_response": "```json\n{\n  \"type\": \"object\",\n  \"required\": [\n    \"transaction_id\",\n    \"amount\",\n    \"currency\",\n    \"parties\"\n  ],\n  \"properties\": {\n    \"transaction_id\": \"TXN-1234567890\",\n    \"amount\": 1500.50,\n    \"currency\": \"USD\",\n    \"exchange_rate\": null,\n    \"parties\": {\n      \"sender\": {\n        \"id\": \"S001\",\n        \"name\": \"Alice Corp\",\n        \"bank\": \"Chase\"\n      },\n      \"receiver\": {\n        \"id\": \"R001\",\n        \"name\": \"Bob Inc\",\n        \"bank\": null\n      }\n    },\n    \"notes\": \"Monthly payme"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "SchemaBench/complex_schema",
+      "task": "complex_schema",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2429.6469688415527,
+      "used_kb": false,
+      "raw_response": "{\n  \"user\": {\n    \"name\": \"Alice\",\n    \"email\": \"alice@example.com\",\n    \"age\": 30\n  },\n  \"settings\": {\n    \"theme\": \"dark\",\n    \"notifications\": true\n  }\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "SchemaBench/custom_formats",
+      "task": "custom_formats",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1565.613031387329,
+      "used_kb": false,
+      "raw_response": "{\n  \"phone\": \"555-123-4567\",\n  \"password\": \"SecurePass123\",\n  \"file_path\": \"/home/user/documents/file.txt\"\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "SchemaBench/escape_translation",
+      "task": "escape_translation",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1325.671911239624,
+      "used_kb": false,
+      "raw_response": "{\"message\": \"He said \\u201cHello World\\u201d\", \"code_snippet\": \"C:\\\\Users\\\\Admin\\\\file.txt\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "SchemaBench/base64_format",
+      "task": "base64_format",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1066.741943359375,
+      "used_kb": false,
+      "raw_response": "{\"data\": \"SGVsbG8gV29ybGQ=\", \"encoding\": \"base64\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/string",
+      "task": "string_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 451.60698890686035,
+      "used_kb": false,
+      "raw_response": "{\"answer\": \"Paris\"}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/integer",
+      "task": "integer_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 321.5470314025879,
+      "used_kb": false,
+      "raw_response": "{\"count\":7}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/boolean",
+      "task": "boolean_output",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 359.9112033843994,
+      "used_kb": false,
+      "raw_response": "{\"result\":false}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/list_strings",
+      "task": "list_strings",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 795.874834060669,
+      "used_kb": false,
+      "raw_response": "{\"items\":[\"Mercury\",\"Venus\",\"Earth\",\"Mars\",\"Jupiter\"]}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/composite",
+      "task": "composite_object",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 690.9070014953613,
+      "used_kb": false,
+      "raw_response": "{\"answer\": \"1945\", \"confidence\": 1}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "StructuredRAG/list_composite",
+      "task": "list_composite",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2409.8918437957764,
+      "used_kb": false,
+      "raw_response": "```\n{\n  \"answers\": [\n    {\"answer\": \"Python\", \"confidence\": 0.8},\n    {\"answer\": \"Java\", \"confidence\": 0.7},\n    {\"answer\": \"C++\", \"confidence\": 0.9}\n  ]\n}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "JSONSchemaBench/easy",
+      "task": "simple_product",
+      "difficulty": "easy",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 1219.7859287261963,
+      "used_kb": false,
+      "raw_response": "```\n{\n  \"name\": \"Widget\",\n  \"price\": 29.99,\n  \"in_stock\": true\n}\n```"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "JSONSchemaBench/medium",
+      "task": "order_with_shipping",
+      "difficulty": "medium",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 2640.88773727417,
+      "used_kb": false,
+      "raw_response": "{\n  \"order_id\": \"ORD-001\",\n  \"customer\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\"\n  },\n  \"shipping\": {\n    \"method\": \"express\",\n    \"address\": \"123 Main St\"\n  }\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "JSONSchemaBench/hard",
+      "task": "api_response",
+      "difficulty": "hard",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 4559.036016464233,
+      "used_kb": false,
+      "raw_response": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Item A\",\n      \"tags\": [\n        \"new\",\n        \"featured\"\n      ]\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Item B\",\n      \"tags\": [\n        \"sale\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"page\": 1,\n    \"total\": 50\n  }\n}"
+    },
+    {
+      "model": "Llama 3.2 3B Instruct v1",
+      "source": "JSONSchemaBench/ultra",
+      "task": "financial_record",
+      "difficulty": "ultra",
+      "is_valid_json": true,
+      "errors": [],
+      "hallucinated_fields": [],
+      "latency_ms": 6255.604982376099,
+      "used_kb": false,
+      "raw_response": "```\n{\n  \"transaction_id\": \"TXN-1234567890\",\n  \"amount\": 1500.5,\n  \"currency\": \"USD\",\n  \"exchange_rate\": null,\n  \"parties\": {\n    \"sender\": {\n      \"id\": \"S001\",\n      \"name\": \"Alice Corp\",\n      \"bank\": \"Chase\"\n    },\n    \"receiver\": {\n      \"id\": \"R001\",\n      \"name\": \"Bob Inc\",\n      \"bank\": null\n    }\n  },\n  \"notes\": \"Monthly payment\"\n}\n```"
+    }
+  ]
+}
